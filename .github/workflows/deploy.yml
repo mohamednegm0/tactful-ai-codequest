@@ -24,17 +24,21 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Install dependencies
-        run: bun install --frozen-lockfile || bun install
+      - name: Install dependencies (if package.json exists)
+        run: |
+          if [ -f package.json ]; then
+            bun install --frozen-lockfile || bun install
+          else
+            echo "no package.json, skipping install"
+          fi
 
       - name: Build (if build script exists)
         run: |
-          if jq -e '.scripts.build' package.json >/dev/null 2>&1; then
+          if [ -f package.json ] && jq -e '.scripts.build' package.json >/dev/null 2>&1; then
             bun run build
           else
             echo "no build script, skipping"
           fi
-        continue-on-error: false
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
