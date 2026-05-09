@@ -1,0 +1,6 @@
+.env
+node_modules
+bun.lockb
+.DS_Store
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
