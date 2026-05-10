@@ -1416,6 +1416,7 @@ html[data-theme="dark"] .stage-tile-yellow { border-color: rgba(251, 191, 36, 0.
 html[data-theme="dark"] .stage-tile-red { border-color: rgba(255, 107, 107, 0.4); }
 
 html[data-theme="dark"] .integration-item-coming-q2 {
+  background: var(--color-warning-soft);
   border-color: rgba(251, 191, 36, 0.3);
 }
 
@@ -1444,6 +1445,10 @@ html[data-theme="dark"] .stage-tile {
 
 html[data-theme="dark"] .integration-item {
   background: var(--color-surface-high);
+}
+
+html[data-theme="dark"] .integration-item.integration-item-coming-q2 {
+  background: var(--color-warning-soft);
 }
 
 /* ============================================================
@@ -1478,19 +1483,15 @@ html[data-theme="dark"] .integration-item {
   line-height: 1;
 }
 
-/* Login page floating toggle */
-.theme-toggle-floating {
+/* Login page: theme + lang toggles wrapped together, fixed top-end */
+.floating-controls {
   position: fixed;
   inset-block-start: var(--space-md);
-  inset-inline-end: calc(var(--space-md) + 200px);
+  inset-inline-end: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
   z-index: 50;
-  box-shadow: var(--shadow-1);
-}
-
-@media (max-width: 720px) {
-  .theme-toggle-floating {
-    inset-inline-end: calc(var(--space-md) + 140px);
-  }
 }
 
 /* ============================================================
@@ -1517,7 +1518,8 @@ body,
     background-color 240ms ease,
     border-color 240ms ease,
     color 240ms ease,
-    box-shadow 240ms ease;
+    box-shadow 240ms ease,
+    transform 200ms ease;
 }
 
 /* ============================================================

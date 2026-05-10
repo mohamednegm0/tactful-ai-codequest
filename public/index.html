@@ -13,15 +13,16 @@
 </head>
 <body class="login-body">
 
-<nav class="lang-toggle" aria-label="Language">
-  <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
-  <button type="button" class="lang-toggle-btn" data-lang="ar">العربية</button>
-  <button type="button" class="lang-toggle-btn" data-lang="eg">مصري</button>
-</nav>
-
-<button type="button" class="theme-toggle theme-toggle-floating" onclick="toggleTheme()" aria-label="Toggle theme">
-  <span class="theme-toggle-icon">☾</span>
-</button>
+<div class="floating-controls">
+  <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span class="theme-toggle-icon">☾</span>
+  </button>
+  <nav class="lang-toggle lang-toggle-inline" aria-label="Language">
+    <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-toggle-btn" data-lang="ar">العربية</button>
+    <button type="button" class="lang-toggle-btn" data-lang="eg">مصري</button>
+  </nav>
+</div>
 
 <main class="login-main">
 
