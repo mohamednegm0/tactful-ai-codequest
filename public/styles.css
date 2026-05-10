@@ -1479,6 +1479,11 @@ html[data-theme="dark"] .integration-item.integration-item-coming-q2 {
   background: var(--color-warning-soft);
 }
 
+/* Brighten the logo SVG in dark mode so it doesn't blend into the background */
+html[data-theme="dark"] .brand-logo-img {
+  filter: brightness(1.65) saturate(1.1);
+}
+
 /* ============================================================
    THEME TOGGLE BUTTON
    ============================================================ */
