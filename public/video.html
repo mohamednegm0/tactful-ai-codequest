@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basira — Walkthrough video</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/basira-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<script src="/strings.js"></script>
+</head>
+<body class="login-body">
+
+<div class="floating-controls">
+  <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span class="theme-toggle-icon">☾</span>
+  </button>
+</div>
+
+<main class="video-page">
+  <header class="video-page-header">
+    <a class="video-page-brand" href="/">
+      <img class="brand-logo-img" src="/assets/basira-mark.svg" alt="" aria-hidden="true">
+      <span class="brand-arabic-sm">بصيرة</span>
+      <span class="brand-latin-sm">Basira</span>
+    </a>
+    <h1 class="video-page-title">Walkthrough video</h1>
+    <p class="video-page-sub">Tactful Product Owner take-home — 5-minute walkthrough by Mohamed Negm.</p>
+  </header>
+
+  <section class="video-frame" id="video-frame">
+    <div class="video-placeholder">
+      <p class="video-placeholder-title">Video uploading…</p>
+      <p class="video-placeholder-sub">Walkthrough video is being uploaded. Refresh in a moment, or visit the live prototype below.</p>
+    </div>
+  </section>
+
+  <nav class="video-page-actions">
+    <a class="primary-action" href="/basira">Open the live prototype →</a>
+    <a class="ghost-action" href="https://github.com/mohamednegm0/tactful-ai-codequest">View the repo on GitHub</a>
+  </nav>
+</main>
+
+<script>
+  applyTheme();
+</script>
+
+</body>
+</html>
