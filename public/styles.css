@@ -1039,19 +1039,31 @@ button {
   flex-direction: column-reverse;
   block-size: 100%;
   position: relative;
-  padding-block-end: 1.5rem;
+  padding-block-end: 2.75rem;
   gap: 1px;
 }
 
 .chart-total {
   position: absolute;
-  inset-block-end: 0;
+  inset-block-end: 1.25rem;
   inset-inline: 0;
   margin: 0;
   text-align: center;
   font-size: 0.6875rem;
   font-weight: 700;
   color: var(--color-text-muted);
+}
+
+.chart-day {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
 }
 
 .seg {
@@ -1074,12 +1086,7 @@ button {
 .seg-dis { background: var(--color-secondary); }
 
 .chart-axis {
-  margin: var(--space-md) 0 0 0;
-  display: flex;
-  justify-content: space-around;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  letter-spacing: 0.1em;
+  display: none;
 }
 
 /* ============================================================

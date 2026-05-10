@@ -156,11 +156,15 @@
       totalLabel.className = "chart-total";
       totalLabel.textContent = total + t("time.min");
       col.appendChild(totalLabel);
+      const dayLabel = document.createElement("p");
+      dayLabel.className = "chart-day";
+      dayLabel.textContent = dayMap[day.day];
+      col.appendChild(dayLabel);
       chart.appendChild(col);
     });
 
     const axis = document.getElementById("chart-axis");
-    axis.textContent = DATA.history.last7Days.map(function (d) { return dayMap[d.day]; }).join("  ·  ");
+    axis.textContent = "";
 
     const dt = document.getElementById("doctor-table-body");
     dt.innerHTML = "";
