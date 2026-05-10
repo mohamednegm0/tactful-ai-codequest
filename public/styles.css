@@ -63,8 +63,10 @@ html, body {
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+html {
   overflow-x: hidden;
-  max-inline-size: 100vw;
 }
 
 a {
@@ -732,6 +734,7 @@ button {
 
 .data-table-scroll {
   overflow-x: auto;
+  max-inline-size: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
 }
@@ -746,9 +749,24 @@ button {
 }
 
 .data-table-scroll .data-table {
-  min-inline-size: 520px;
   border: none;
   border-radius: 0;
+}
+
+.data-table td,
+.data-table th {
+  word-break: break-word;
+}
+
+@media (max-width: 720px) {
+  .data-table th,
+  .data-row td {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  .data-table th {
+    font-size: 0.6875rem;
+  }
 }
 
 .data-table th {
