@@ -1,26 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 170" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-labelledby="title desc">
   <title id="title">Basira logo</title>
-  <desc id="desc">Basira bilingual logo with an abstract teal flow-lens mark and stacked Arabic and English wordmark.</desc>
+  <desc id="desc">Basira bilingual logo with an abstract Arabic ba mark and subtle eye-shaped flow aperture.</desc>
   <defs>
-    <linearGradient id="base" x1="32" y1="28" x2="136" y2="136" gradientUnits="userSpaceOnUse">
+    <linearGradient id="mark" x1="24" y1="55" x2="112" y2="99" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0b636d"/>
       <stop offset="1" stop-color="#004a52"/>
     </linearGradient>
-    <linearGradient id="accent" x1="58" y1="65" x2="112" y2="117" gradientUnits="userSpaceOnUse">
+    <linearGradient id="accent" x1="48" y1="61" x2="99" y2="81" gradientUnits="userSpaceOnUse">
       <stop stop-color="#7ef0ff"/>
       <stop offset="1" stop-color="#29abb9"/>
     </linearGradient>
   </defs>
-  <g transform="translate(22 21)">
-    <rect width="128" height="128" rx="28" fill="url(#base)"/>
-    <path d="M35 59C43.3 47.4 55.1 41.4 68.2 42.2C83.7 43.1 96 52.2 102 66" fill="none" stroke="#e9fdff" stroke-width="12" stroke-linecap="round"/>
-    <path d="M101 66.5C94.8 83.5 81.9 92.6 63.1 93H35" fill="none" stroke="#e9fdff" stroke-width="12" stroke-linecap="round"/>
-    <path d="M47 64C55.7 57.2 66.8 55.9 77.2 61C85.5 65.1 90.8 72.1 93 80" fill="none" stroke="url(#accent)" stroke-width="7" stroke-linecap="round"/>
-    <circle cx="82" cy="64" r="6.5" fill="#7ef0ff"/>
-    <circle cx="64" cy="103" r="5.8" fill="#7ef0ff"/>
+  <g transform="translate(14 14)">
+    <path d="M18 78h45.5C86 78 101.2 66.8 107 49.5" fill="none" stroke="url(#mark)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M42 63.5C54 54.4 73 53.5 90 61.7" fill="none" stroke="url(#accent)" stroke-width="7.8" stroke-linecap="round"/>
+    <path d="M44 71.8C57.4 78.4 76.3 77.1 91 66.7" fill="none" stroke="#d6ecef" stroke-width="4.8" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="58" cy="106" r="8" fill="#29abb9"/>
   </g>
-  <g transform="translate(180 36)">
+  <g transform="translate(140 24)">
     <text x="0" y="56" fill="#004a52" font-family="Cairo, Tahoma, Arial, sans-serif" font-size="62" font-weight="700">بصيرة</text>
-    <text x="3" y="107" fill="#0a1f21" font-family="'Plus Jakarta Sans', Inter, Arial, sans-serif" font-size="43" font-weight="700">Basira</text>
+    <text x="2" y="108" fill="#0a1f21" font-family="'Plus Jakarta Sans', Inter, Arial, sans-serif" font-size="42" font-weight="700">Basira</text>
   </g>
 </svg>

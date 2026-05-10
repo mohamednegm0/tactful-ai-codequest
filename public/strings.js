@@ -312,6 +312,36 @@ function setLang(code) {
   applyLang();
 }
 
+function getTheme() {
+  const stored = (typeof localStorage !== "undefined") ? localStorage.getItem("basira_theme") : null;
+  if (stored === "dark" || stored === "light") return stored;
+  if (typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    return "dark";
+  }
+  return "light";
+}
+
+function setTheme(mode) {
+  if (mode !== "light" && mode !== "dark") return;
+  localStorage.setItem("basira_theme", mode);
+  applyTheme();
+}
+
+function toggleTheme() {
+  setTheme(getTheme() === "dark" ? "light" : "dark");
+}
+
+function applyTheme() {
+  const theme = getTheme();
+  document.documentElement.setAttribute("data-theme", theme);
+  document.querySelectorAll(".theme-toggle").forEach(function (btn) {
+    const icon = btn.querySelector(".theme-toggle-icon");
+    if (icon) icon.textContent = theme === "dark" ? "☀" : "☾";
+    btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    btn.setAttribute("title", theme === "dark" ? "Light mode" : "Dark mode");
+  });
+}
+
 function t(key) {
   const lang = getLang();
   return (STRINGS[lang] && STRINGS[lang][key]) || STRINGS.en[key] || key;

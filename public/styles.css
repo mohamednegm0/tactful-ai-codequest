@@ -111,18 +111,18 @@ button {
 .brand-mark {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 1.125rem;
 }
 
 .brand-logo-img {
-  inline-size: 38px;
-  block-size: 38px;
+  inline-size: 44px;
+  block-size: 44px;
   flex: 0 0 auto;
 }
 
 .brand-logo-img-lg {
-  inline-size: 82px;
-  block-size: 82px;
+  inline-size: 92px;
+  block-size: 92px;
 }
 
 .brand-wordmark,
@@ -130,7 +130,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0;
+  gap: 0.0625rem;
 }
 
 .brand-wordmark {
@@ -139,16 +139,18 @@ button {
 
 .brand-arabic {
   font-family: "Cairo", var(--font-display);
-  font-size: 4.25rem;
+  font-size: 4rem;
   font-weight: 700;
   color: var(--color-primary);
-  line-height: 0.95;
+  line-height: 0.92;
   letter-spacing: 0;
+  direction: rtl;
+  unicode-bidi: plaintext;
 }
 
 .brand-latin {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.05rem;
   font-weight: 700;
   color: var(--color-text);
   line-height: 1.1;
@@ -173,12 +175,12 @@ button {
 
 @media (max-width: 720px) {
   .brand-logo-img-lg {
-    inline-size: 64px;
-    block-size: 64px;
+    inline-size: 72px;
+    block-size: 72px;
   }
 
   .brand-arabic {
-    font-size: 3.25rem;
+    font-size: 3.125rem;
   }
 
   .brand-latin {
@@ -314,8 +316,8 @@ button {
   }
 
   .brand-logo-img {
-    inline-size: 34px;
-    block-size: 34px;
+    inline-size: 38px;
+    block-size: 38px;
   }
 }
 
@@ -327,11 +329,13 @@ button {
 
 .brand-arabic-sm {
   font-family: "Cairo", var(--font-display);
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--color-primary);
-  line-height: 1;
+  line-height: 0.98;
   letter-spacing: 0;
+  direction: rtl;
+  unicode-bidi: plaintext;
 }
 
 .brand-latin-sm {
@@ -1349,4 +1353,345 @@ html[lang="eg"] .breadcrumb-link {
 
 /* RTL: pulse dot box-shadow doesn't depend on direction; nothing to flip.
    RTL: timeline marker stays top-anchored; grid columns auto-flip via dir.
+   RTL: chart bars stack bottom-up regardless of direction. */
+
+/* ============================================================
+   DARK THEME
+   ============================================================ */
+
+html[data-theme="dark"] {
+  --color-bg: #0a1f21;
+  --color-surface: #142729;
+  --color-surface-low: #0f2224;
+  --color-surface-high: #1c3437;
+  --color-border: #2a4448;
+  --color-border-strong: #3f5e62;
+  --color-text: #e6f2f4;
+  --color-text-muted: #a8c0c4;
+  --color-text-subtle: #708588;
+
+  --color-primary: #29ABB9;
+  --color-primary-dark: #62d7e5;
+  --color-primary-soft: rgba(41, 171, 185, 0.18);
+  --color-primary-tint: rgba(41, 171, 185, 0.08);
+
+  --color-secondary: #62d7e5;
+  --color-secondary-soft: rgba(98, 215, 229, 0.15);
+
+  --color-tertiary: #fbbf24;
+  --color-tertiary-soft: rgba(234, 179, 8, 0.18);
+
+  --color-error: #ff7b6b;
+  --color-error-soft: rgba(255, 107, 107, 0.16);
+
+  --color-warning: #fbbf24;
+  --color-warning-soft: rgba(251, 191, 36, 0.14);
+
+  --color-success: #4ade80;
+  --color-success-soft: rgba(74, 222, 128, 0.14);
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="dark"] .login-body {
+  background: linear-gradient(135deg, #0a1f21 0%, #142729 100%);
+}
+
+html[data-theme="dark"] .data-row-stalled {
+  background: rgba(255, 107, 107, 0.08);
+}
+
+html[data-theme="dark"] .kpi-warning {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+html[data-theme="dark"] .kpi-warning .kpi-value {
+  color: #fbbf24;
+}
+
+html[data-theme="dark"] .stage-tile-green { border-color: rgba(74, 222, 128, 0.3); }
+html[data-theme="dark"] .stage-tile-yellow { border-color: rgba(251, 191, 36, 0.3); }
+html[data-theme="dark"] .stage-tile-red { border-color: rgba(255, 107, 107, 0.4); }
+
+html[data-theme="dark"] .integration-item-coming-q2 {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+html[data-theme="dark"] .integration-badge-on {
+  background: rgba(74, 222, 128, 0.18);
+  color: #4ade80;
+}
+
+html[data-theme="dark"] .callout-warning { border-color: rgba(255, 107, 107, 0.35); }
+html[data-theme="dark"] .callout-insight { border-color: rgba(98, 215, 229, 0.3); }
+
+html[data-theme="dark"] .login-card,
+html[data-theme="dark"] .kpi,
+html[data-theme="dark"] .funnel,
+html[data-theme="dark"] .chart-card,
+html[data-theme="dark"] .table-card,
+html[data-theme="dark"] .settings-card,
+html[data-theme="dark"] .patient-detail,
+html[data-theme="dark"] .data-table {
+  background: var(--color-surface);
+}
+
+html[data-theme="dark"] .stage-tile {
+  background: var(--color-surface-high);
+}
+
+html[data-theme="dark"] .integration-item {
+  background: var(--color-surface-high);
+}
+
+/* ============================================================
+   THEME TOGGLE BUTTON
+   ============================================================ */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  transform: rotate(15deg);
+}
+
+.theme-toggle-icon {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Login page floating toggle */
+.theme-toggle-floating {
+  position: fixed;
+  inset-block-start: var(--space-md);
+  inset-inline-end: calc(var(--space-md) + 200px);
+  z-index: 50;
+  box-shadow: var(--shadow-1);
+}
+
+@media (max-width: 720px) {
+  .theme-toggle-floating {
+    inset-inline-end: calc(var(--space-md) + 140px);
+  }
+}
+
+/* ============================================================
+   GLOBAL TRANSITIONS (smooth theme switching)
+   ============================================================ */
+
+body,
+.app-bar,
+.login-card,
+.kpi,
+.funnel,
+.stage-tile,
+.callout,
+.chart-card,
+.table-card,
+.settings-card,
+.patient-detail,
+.integration-item,
+.data-table,
+.field-input,
+.lang-toggle-btn,
+.theme-toggle {
+  transition:
+    background-color 240ms ease,
+    border-color 240ms ease,
+    color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes basira-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes basira-slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes basira-pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(186, 26, 26, 0); }
+  50% { box-shadow: 0 0 0 6px rgba(186, 26, 26, 0.08); }
+}
+
+@keyframes basira-grow-bar {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes basira-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.9); }
+}
+
+@keyframes basira-shimmer-once {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+body {
+  animation: basira-fade-in 320ms ease-out both;
+}
+
+.dashboard > section {
+  animation: basira-slide-up 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dashboard > section:nth-child(1) { animation-delay: 0ms; }
+.dashboard > section:nth-child(2) { animation-delay: 60ms; }
+.dashboard > section:nth-child(3) { animation-delay: 120ms; }
+.dashboard > section:nth-child(4) { animation-delay: 180ms; }
+.dashboard > section:nth-child(5) { animation-delay: 240ms; }
+
+.callout-warning {
+  animation: basira-slide-up 360ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both,
+             basira-pulse-soft 2.4s ease-in-out 1.5s infinite;
+}
+
+.live-dot {
+  animation: basira-pulse-dot 1.6s ease-in-out infinite;
+}
+
+.seg {
+  transform-origin: bottom;
+  animation: basira-grow-bar 540ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.chart-col:nth-child(1) .seg { animation-delay: 40ms; }
+.chart-col:nth-child(2) .seg { animation-delay: 90ms; }
+.chart-col:nth-child(3) .seg { animation-delay: 140ms; }
+.chart-col:nth-child(4) .seg { animation-delay: 190ms; }
+.chart-col:nth-child(5) .seg { animation-delay: 240ms; }
+.chart-col:nth-child(6) .seg { animation-delay: 290ms; }
+.chart-col:nth-child(7) .seg { animation-delay: 340ms; }
+
+.stage-tile {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms ease,
+              background-color 240ms ease,
+              border-color 240ms ease;
+}
+
+.stage-tile:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: var(--shadow-2);
+}
+
+.kpi {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms ease,
+              background-color 240ms ease,
+              border-color 240ms ease;
+}
+
+.kpi:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-1);
+}
+
+.app-nav-link {
+  position: relative;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.app-nav-link::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-end: 0;
+  inline-size: 0;
+  block-size: 2px;
+  background: var(--color-primary-dark);
+  transition: inline-size 200ms ease, inset-inline-start 200ms ease;
+  border-radius: 1px;
+}
+
+.app-nav-link:hover::after {
+  inline-size: 60%;
+  inset-inline-start: 20%;
+}
+
+.app-nav-link-active::after {
+  inline-size: 60%;
+  inset-inline-start: 20%;
+}
+
+.primary-action {
+  position: relative;
+  overflow: hidden;
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.primary-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(11, 99, 109, 0.25);
+}
+
+.primary-action:active {
+  transform: translateY(0);
+}
+
+.callout-action {
+  position: relative;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.callout-action:hover {
+  transform: translateX(4px);
+}
+
+html[dir="rtl"] .callout-action:hover {
+  transform: translateX(-4px);
+}
+
+.data-row {
+  transition: background 160ms ease;
+}
+
+.data-row:hover {
+  background: var(--color-primary-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .dashboard > section,
+  .callout-warning,
+  .seg,
+  .live-dot {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* old comment block continues below */
+/*
    RTL: chart bars stack bottom-up regardless of direction. */

@@ -28,6 +28,9 @@
     <a class="app-nav-link" href="/settings" data-i18n="nav.settings">Settings</a>
   </nav>
   <div class="app-bar-tail">
+    <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span class="theme-toggle-icon">☾</span>
+    </button>
     <nav class="lang-toggle lang-toggle-inline" aria-label="Language">
       <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
       <button type="button" class="lang-toggle-btn" data-lang="ar">عر</button>
@@ -118,6 +121,7 @@
     btn.addEventListener("click", function () { setLang(btn.dataset.lang); });
   });
 
+  applyTheme();
   applyLang();
 
   const liveDot = document.querySelector(".live-dot");

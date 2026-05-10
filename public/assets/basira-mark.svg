@@ -1,20 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
   <title id="title">Basira mark</title>
-  <desc id="desc">An abstract teal flow-lens mark inspired by the Arabic ba, representing visibility and patient movement.</desc>
+  <desc id="desc">An abstract Arabic ba mark with a subtle eye-shaped flow aperture.</desc>
   <defs>
-    <linearGradient id="base" x1="18" y1="14" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+    <linearGradient id="mark" x1="25" y1="47" x2="105" y2="91" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0b636d"/>
       <stop offset="1" stop-color="#004a52"/>
     </linearGradient>
-    <linearGradient id="accent" x1="43" y1="54" x2="93" y2="103" gradientUnits="userSpaceOnUse">
+    <linearGradient id="accent" x1="43" y1="54" x2="89" y2="72" gradientUnits="userSpaceOnUse">
       <stop stop-color="#7ef0ff"/>
       <stop offset="1" stop-color="#29abb9"/>
     </linearGradient>
   </defs>
-  <rect x="10" y="10" width="108" height="108" rx="24" fill="url(#base)"/>
-  <path d="M35 59C43.3 47.4 55.1 41.4 68.2 42.2C83.7 43.1 96 52.2 102 66" fill="none" stroke="#e9fdff" stroke-width="12" stroke-linecap="round"/>
-  <path d="M101 66.5C94.8 83.5 81.9 92.6 63.1 93H35" fill="none" stroke="#e9fdff" stroke-width="12" stroke-linecap="round"/>
-  <path d="M47 64C55.7 57.2 66.8 55.9 77.2 61C85.5 65.1 90.8 72.1 93 80" fill="none" stroke="url(#accent)" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="82" cy="64" r="6.5" fill="#7ef0ff"/>
-  <circle cx="64" cy="103" r="5.8" fill="#7ef0ff"/>
+  <path d="M27 78h38.5C85.2 78 98.5 68.2 103 53.5" fill="none" stroke="url(#mark)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M43 64.5C53.3 56.3 69.7 55.4 84.8 62.5" fill="none" stroke="url(#accent)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M45 71.5C56.8 77.5 73.3 76.4 86.5 67.2" fill="none" stroke="#d6ecef" stroke-width="4.5" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="60" cy="103" r="7.5" fill="#29abb9"/>
 </svg>
