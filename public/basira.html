@@ -18,9 +18,9 @@
     <span class="brand-latin-sm">Basira</span>
   </div>
   <nav class="app-nav">
-    <a class="app-nav-link app-nav-link-active" href="/basira.html">Live</a>
-    <a class="app-nav-link" href="/history.html">History</a>
-    <a class="app-nav-link" href="/settings.html">Settings</a>
+    <a class="app-nav-link app-nav-link-active" href="/basira">Live</a>
+    <a class="app-nav-link" href="/history">History</a>
+    <a class="app-nav-link" href="/settings">Settings</a>
   </nav>
   <div class="app-bar-user">
     <span class="user-name" id="user-name"></span>
@@ -72,7 +72,7 @@
     <div class="callout-body">
       <h2 class="callout-title">Lab/Imaging is your bottleneck right now.</h2>
       <p class="callout-text">Median wait is 38 minutes — 13 minutes above the threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.</p>
-      <a class="callout-action" href="/stage-lab.html">Investigate Lab/Imaging →</a>
+      <a class="callout-action" href="/stage-lab">Investigate Lab/Imaging →</a>
     </div>
   </section>
 
@@ -95,7 +95,7 @@
     const heat = stageHeat(stage);
     const tile = document.createElement("a");
     tile.className = "stage-tile stage-tile-" + heat;
-    tile.href = stage.id === "lab" ? "/stage-lab.html" : "#";
+    tile.href = stage.id === "lab" ? "/stage-lab" : "#";
     tile.innerHTML =
       '<p class="stage-name">' + stage.name + '</p>' +
       '<p class="stage-wait">' + fmtMin(stage.medianWaitMin) + '</p>' +
