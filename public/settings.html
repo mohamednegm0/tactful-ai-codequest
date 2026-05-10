@@ -6,9 +6,10 @@
 <title>Basira — Settings</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <script src="/data.js"></script>
+<script src="/strings.js"></script>
 </head>
 <body class="app-body">
 
@@ -18,13 +19,20 @@
     <span class="brand-latin-sm">Basira</span>
   </div>
   <nav class="app-nav">
-    <a class="app-nav-link" href="/basira">Live</a>
-    <a class="app-nav-link" href="/history">History</a>
-    <a class="app-nav-link app-nav-link-active" href="/settings">Settings</a>
+    <a class="app-nav-link" href="/basira" data-i18n="nav.live">Live</a>
+    <a class="app-nav-link" href="/history" data-i18n="nav.history">History</a>
+    <a class="app-nav-link app-nav-link-active" href="/settings" data-i18n="nav.settings">Settings</a>
   </nav>
-  <div class="app-bar-user">
-    <span class="user-name" id="user-name"></span>
-    <span class="user-hospital" id="user-hospital"></span>
+  <div class="app-bar-tail">
+    <nav class="lang-toggle lang-toggle-inline" aria-label="Language">
+      <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-toggle-btn" data-lang="ar">عر</button>
+      <button type="button" class="lang-toggle-btn" data-lang="eg">مصري</button>
+    </nav>
+    <div class="app-bar-user">
+      <span class="user-name" id="user-name"></span>
+      <span class="user-hospital" id="user-hospital"></span>
+    </div>
   </div>
 </header>
 
@@ -32,54 +40,48 @@
 
   <section class="dashboard-header">
     <div>
-      <h1 class="dashboard-title">Settings</h1>
-      <p class="dashboard-now">Stage thresholds and integrations</p>
+      <h1 class="dashboard-title" data-i18n="settings.title">Settings</h1>
+      <p class="dashboard-now" data-i18n="settings.sub">Stage thresholds and integrations</p>
     </div>
   </section>
 
   <section class="settings-grid">
 
     <article class="settings-card">
-      <h2 class="settings-card-title">Stage thresholds</h2>
-      <p class="settings-card-sub">Median wait above the red threshold marks a stage as a bottleneck on the Live view.</p>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Stage</th>
-            <th class="data-table-num">Yellow</th>
-            <th class="data-table-num">Red</th>
-          </tr>
-        </thead>
-        <tbody id="threshold-body"></tbody>
-      </table>
+      <h2 class="settings-card-title" data-i18n="settings.thresholds.title">Stage thresholds</h2>
+      <p class="settings-card-sub" data-i18n="settings.thresholds.sub">Median wait above the red threshold marks a stage as a bottleneck on the Live view.</p>
+      <div class="data-table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th data-i18n="settings.thresholds.col.stage">Stage</th>
+              <th class="data-table-num" data-i18n="settings.thresholds.col.yellow">Yellow</th>
+              <th class="data-table-num" data-i18n="settings.thresholds.col.red">Red</th>
+            </tr>
+          </thead>
+          <tbody id="threshold-body"></tbody>
+        </table>
+      </div>
     </article>
 
     <article class="settings-card">
-      <h2 class="settings-card-title">Integrations</h2>
-      <p class="settings-card-sub">Basira sits on top of your existing systems. We pull data; we don't replace them.</p>
+      <h2 class="settings-card-title" data-i18n="settings.integrations.title">Integrations</h2>
+      <p class="settings-card-sub" data-i18n="settings.integrations.sub">Basira sits on top of your existing systems. We pull data; we don't replace them.</p>
       <ul class="integration-list" id="integration-list"></ul>
     </article>
 
     <article class="settings-card settings-card-wide">
-      <h2 class="settings-card-title">Localisation</h2>
+      <h2 class="settings-card-title" data-i18n="settings.locale.title">Localisation</h2>
       <div class="locale-row">
         <div class="locale-info">
-          <p class="locale-label">Interface language</p>
-          <p class="locale-sub">Production: Arabic-first with English toggle. Demo: English only.</p>
-        </div>
-        <div class="locale-toggle">
-          <button type="button" class="chip chip-active">English</button>
-          <button type="button" class="chip chip-disabled" disabled>العربية (Phase 2)</button>
+          <p class="locale-label" data-i18n="settings.locale.lang.label">Interface language</p>
+          <p class="locale-sub" data-i18n="settings.locale.lang.sub">Production: Arabic-first with English toggle. Demo: switch using the Language toggle in the header.</p>
         </div>
       </div>
       <div class="locale-row">
         <div class="locale-info">
-          <p class="locale-label">Reading direction</p>
-          <p class="locale-sub">Layout uses logical CSS properties — flips automatically when language switches to Arabic.</p>
-        </div>
-        <div class="locale-toggle">
-          <button type="button" class="chip chip-active">LTR</button>
-          <button type="button" class="chip chip-disabled" disabled>RTL (Phase 2)</button>
+          <p class="locale-label" data-i18n="settings.locale.dir.label">Reading direction</p>
+          <p class="locale-sub" data-i18n="settings.locale.dir.sub">Layout uses logical CSS properties. The same files render LTR for English and RTL for Arabic — no rewrite.</p>
         </div>
       </div>
     </article>
@@ -89,36 +91,58 @@
 </main>
 
 <script>
-  document.getElementById("user-name").textContent = DATA.hospital.director.name;
-  document.getElementById("user-hospital").textContent = DATA.hospital.name;
+  function renderSettings() {
+    document.getElementById("user-name").textContent = DATA.hospital.director.name;
+    document.getElementById("user-hospital").textContent = DATA.hospital.name;
 
-  const tb = document.getElementById("threshold-body");
-  DATA.thresholds.forEach(function (t) {
-    const tr = document.createElement("tr");
-    tr.className = "data-row";
-    tr.innerHTML =
-      '<td class="data-cell-name">' + t.stage + '</td>' +
-      '<td class="data-table-num">' + t.yellow + ' min</td>' +
-      '<td class="data-table-num">' + t.red + ' min</td>';
-    tb.appendChild(tr);
+    const stageKeyMap = {
+      "Registration": "stage.registration",
+      "Triage": "stage.triage",
+      "Consultation": "stage.consult",
+      "Lab/Imaging": "stage.lab",
+      "Pharmacy": "stage.pharmacy",
+      "Discharge": "stage.discharge"
+    };
+
+    const tb = document.getElementById("threshold-body");
+    tb.innerHTML = "";
+    DATA.thresholds.forEach(function (th) {
+      const tr = document.createElement("tr");
+      tr.className = "data-row";
+      const stageLabel = stageKeyMap[th.stage] ? t(stageKeyMap[th.stage]) : th.stage;
+      tr.innerHTML =
+        '<td class="data-cell-name">' + stageLabel + '</td>' +
+        '<td class="data-table-num">' + th.yellow + ' ' + t("time.min") + '</td>' +
+        '<td class="data-table-num">' + th.red + ' ' + t("time.min") + '</td>';
+      tb.appendChild(tr);
+    });
+
+    const il = document.getElementById("integration-list");
+    il.innerHTML = "";
+    DATA.integrations.forEach(function (i) {
+      const li = document.createElement("li");
+      li.className = "integration-item integration-item-" + i.status;
+      let badge = "";
+      if (i.status === "connected") badge = '<span class="integration-badge integration-badge-on">' + t("settings.integrations.connected") + '</span>';
+      if (i.status === "coming-q2") badge = '<span class="integration-badge integration-badge-soon">' + t("settings.integrations.coming") + '</span>';
+      li.innerHTML =
+        '<div class="integration-head">' +
+          '<p class="integration-name">' + i.name + '</p>' +
+          badge +
+        '</div>' +
+        '<p class="integration-desc">' + i.desc + '</p>' +
+        (i.note ? '<p class="integration-note">' + i.note + '</p>' : '');
+      il.appendChild(li);
+    });
+  }
+
+  function onLangApplied() { renderSettings(); }
+
+  document.querySelectorAll(".lang-toggle-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { setLang(btn.dataset.lang); });
   });
 
-  const il = document.getElementById("integration-list");
-  DATA.integrations.forEach(function (i) {
-    const li = document.createElement("li");
-    li.className = "integration-item integration-item-" + i.status;
-    let badge = "";
-    if (i.status === "connected") badge = '<span class="integration-badge integration-badge-on">Connected</span>';
-    if (i.status === "coming-q2") badge = '<span class="integration-badge integration-badge-soon">Coming Q2</span>';
-    li.innerHTML =
-      '<div class="integration-head">' +
-        '<p class="integration-name">' + i.name + '</p>' +
-        badge +
-      '</div>' +
-      '<p class="integration-desc">' + i.desc + '</p>' +
-      (i.note ? '<p class="integration-note">' + i.note + '</p>' : '');
-    il.appendChild(li);
-  });
+  applyLang();
 </script>
 
 </body>

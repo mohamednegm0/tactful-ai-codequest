@@ -62,7 +62,8 @@ const DATA = {
 
   integrations: [
     { name: "Vezeeta",                desc: "Patient bookings sync",         status: "connected" },
-    { name: "Clinisys HIS",           desc: "Patient records + lab orders",  status: "connected" },
+    { name: "Clinisys (Lab)",         desc: "Lab orders + imaging events",   status: "connected" },
+    { name: "Hospital HIS",           desc: "Patient records + admissions",  status: "connected" },
     { name: "WhatsApp Patient Updates", desc: "Outbound delay notifications", status: "coming-q2",
       note: "Requires compliance partner (Unifonic-class) for PDPL audit trail. Phase 2." }
   ],
@@ -85,8 +86,10 @@ function stageHeat(stage) {
 
 function fmtMin(n) {
   if (n == null) return "—";
-  if (n < 60) return n + " min";
+  const minLabel = (typeof t === "function") ? t("time.min") : "min";
+  const hourLabel = (typeof t === "function") ? t("time.hour") : "h";
+  if (n < 60) return n + " " + minLabel;
   const h = Math.floor(n / 60);
   const m = n % 60;
-  return h + "h " + (m ? m + "m" : "");
+  return h + hourLabel + " " + (m ? m + minLabel : "");
 }

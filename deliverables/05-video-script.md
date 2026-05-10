@@ -20,7 +20,7 @@ The brief: unscripted is fine, mistakes are fine, they want to hear how you reas
 
 > "**One**, the front desk isn't the bottleneck. Hospital ops literature consistently shows the choke is *inside* the clinical workflow — consultant late-arrival, lab and imaging turnaround. Patients wait invisibly. A queue board solves a visible problem that isn't the real one.
 
-> "**Two**, Egypt isn't greenfield. Vezeeta owns patient bookings. Cleopatra runs Clinisys. Building another HMS or another queue board competes with two incumbents that already exist.
+> "**Two**, Egypt has tools but a real gap. Vezeeta does bookings. Clinisys is a Lab Information System — labs and imaging — not hospital-wide. The hospital's HIS handles records. None of them surface a live patient-flow view for the operations director. Epic has Capacity Command Center globally, but no Egyptian private hospital is running Epic.
 
 > "So I picked a different wedge: **visibility, not replacement**. I called it Basira — بصيرة — Arabic for *insight*. The deeper sense of seeing what others miss. The product makes the invisible clinical queue visible to the one person who can act on it: the operations director."
 
@@ -42,7 +42,7 @@ The brief: unscripted is fine, mistakes are fine, they want to hear how you reas
 > "Now I want to know if this is a fluke or a pattern. History view, last seven days. The red bar is Lab. **Tuesday and Thursday are spikes** — 39 to 41 minutes versus 22 on other days. The insight callout flags it: review CT staffing on those days." *(scroll to per-doctor table)* "And per doctor: Dr. Hassan averages 23 minutes above the next-fastest doctor. That's a conversation."
 
 **Cue 6 — Click Settings tab:**
-> "Settings shows two things I want to flag. First, integrations: we sit on top of Clinisys and Vezeeta — we don't replace them. Second — and this matters — WhatsApp Patient Updates is marked *Coming Q2, requires compliance partner*. The brief mentions WhatsApp twice. I deliberately did not lead with it. Healthcare WhatsApp is compliance-hostile in MENA — PDPL audit trail, no medical-grade by default. We need a Unifonic-class partner. So WhatsApp is Phase 2 once we know which delays are worth surfacing."
+> "Settings shows two things. First, integrations: we layer on top of the hospital's HIS, on Clinisys for lab events, and Vezeeta for bookings — we don't replace any of them. Second — and this matters — WhatsApp Patient Updates is marked *Coming Q2, requires compliance partner*. The brief mentions WhatsApp twice. I deliberately did not lead with it. Healthcare WhatsApp is compliance-hostile in MENA — PDPL audit trail, no medical-grade by default. We'd need a Unifonic-class partner. So WhatsApp is Phase 2, once we know which delays are worth surfacing."
 
 ## Section 4 · 3:30–4:15 · Measurement & decision criteria (back to camera)
 

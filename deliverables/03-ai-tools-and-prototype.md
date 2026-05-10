@@ -12,7 +12,7 @@
 4. Top of the queue: Ahmed M., 47 min waiting for CT, ordered by Dr. Hassan
 5. Scroll to timeline: confirms the stall is in Lab, not upstream
 6. `/history` — 7-day pattern shows Tue/Thu Lab spikes, Dr. Hassan averages 23 min above peers
-7. `/settings` — integrations tile shows Vezeeta & Clinisys connected, WhatsApp deferred to Q2
+7. `/settings` — integrations tile shows the hospital's HIS, Vezeeta, and Clinisys (Lab) connected, WhatsApp deferred to Q2
 
 ## AI tools used — and where each one helped
 

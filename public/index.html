@@ -6,10 +6,17 @@
 <title>Basira — Sign in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<script src="/strings.js"></script>
 </head>
 <body class="login-body">
+
+<nav class="lang-toggle" aria-label="Language">
+  <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
+  <button type="button" class="lang-toggle-btn" data-lang="ar">العربية</button>
+  <button type="button" class="lang-toggle-btn" data-lang="eg">مصري</button>
+</nav>
 
 <main class="login-main">
 
@@ -18,18 +25,18 @@
       <span class="brand-arabic">بصيرة</span>
       <span class="brand-latin">Basira</span>
     </div>
-    <p class="brand-tagline">Patient flow you can actually see.</p>
-    <p class="brand-sub">by Medicena</p>
+    <p class="brand-tagline" data-i18n="brand.tagline">Patient flow you can actually see.</p>
+    <p class="brand-sub" data-i18n="brand.by">by Medicena</p>
   </section>
 
   <section class="login-card">
-    <h1 class="login-title">Sign in to your hospital</h1>
-    <p class="login-helptext">Use your Clinisys credentials to continue.</p>
+    <h1 class="login-title" data-i18n="login.title">Sign in to your hospital</h1>
+    <p class="login-helptext" data-i18n="login.help">Use your hospital credentials to continue.</p>
 
     <form class="login-form" action="/basira" method="get">
       <label class="field">
-        <span class="field-label">Hospital</span>
-        <select class="field-input" name="hospital">
+        <span class="field-label" data-i18n="login.hospital">Hospital</span>
+        <select class="field-input" name="hospital" aria-label="Hospital">
           <option>El Salam Specialist Hospital — New Cairo</option>
           <option>Andalusia Maadi (demo)</option>
           <option>Heliopolis Polyclinic (demo)</option>
@@ -37,19 +44,19 @@
       </label>
 
       <label class="field">
-        <span class="field-label">Email</span>
-        <input class="field-input" type="email" name="email" value="mona.khalil@elsalam.eg" autocomplete="email">
+        <span class="field-label" data-i18n="login.email">Email</span>
+        <input class="field-input" type="email" name="email" value="mona.khalil@elsalam.eg" autocomplete="email" aria-label="Email">
       </label>
 
       <label class="field">
-        <span class="field-label">Password</span>
-        <input class="field-input" type="password" name="password" value="••••••••••" autocomplete="current-password">
+        <span class="field-label" data-i18n="login.password">Password</span>
+        <input class="field-input" type="password" name="password" value="••••••••••" autocomplete="current-password" aria-label="Password">
       </label>
 
-      <button class="primary-action" type="submit">Sign in</button>
+      <button class="primary-action" type="submit" data-i18n="login.submit">Sign in</button>
     </form>
 
-    <p class="login-note">Demo build. Any sign-in opens the dashboard with mock data.</p>
+    <p class="login-note" data-i18n="login.note">Demo build. Any sign-in opens the dashboard with mock data.</p>
   </section>
 
 </main>
@@ -57,8 +64,15 @@
 <footer class="login-footer">
   <span>Basira · Medicena · Cairo</span>
   <span class="login-footer-sep">·</span>
-  <span>Demo build for Tactful PO take-home</span>
+  <span data-i18n="login.footer.about">Demo build for Tactful PO take-home</span>
 </footer>
+
+<script>
+  document.querySelectorAll(".lang-toggle-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { setLang(btn.dataset.lang); });
+  });
+  applyLang();
+</script>
 
 </body>
 </html>

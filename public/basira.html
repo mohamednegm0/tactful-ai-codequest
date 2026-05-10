@@ -6,9 +6,10 @@
 <title>Basira — Live patient flow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <script src="/data.js"></script>
+<script src="/strings.js"></script>
 </head>
 <body class="app-body">
 
@@ -18,13 +19,20 @@
     <span class="brand-latin-sm">Basira</span>
   </div>
   <nav class="app-nav">
-    <a class="app-nav-link app-nav-link-active" href="/basira">Live</a>
-    <a class="app-nav-link" href="/history">History</a>
-    <a class="app-nav-link" href="/settings">Settings</a>
+    <a class="app-nav-link app-nav-link-active" href="/basira" data-i18n="nav.live">Live</a>
+    <a class="app-nav-link" href="/history" data-i18n="nav.history">History</a>
+    <a class="app-nav-link" href="/settings" data-i18n="nav.settings">Settings</a>
   </nav>
-  <div class="app-bar-user">
-    <span class="user-name" id="user-name"></span>
-    <span class="user-hospital" id="user-hospital"></span>
+  <div class="app-bar-tail">
+    <nav class="lang-toggle lang-toggle-inline" aria-label="Language">
+      <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-toggle-btn" data-lang="ar">عر</button>
+      <button type="button" class="lang-toggle-btn" data-lang="eg">مصري</button>
+    </nav>
+    <div class="app-bar-user">
+      <span class="user-name" id="user-name"></span>
+      <span class="user-hospital" id="user-hospital"></span>
+    </div>
   </div>
 </header>
 
@@ -32,23 +40,23 @@
 
   <section class="dashboard-header">
     <div>
-      <h1 class="dashboard-title">Live patient flow</h1>
+      <h1 class="dashboard-title" data-i18n="dashboard.title">Live patient flow</h1>
       <p class="dashboard-now" id="now-line"></p>
     </div>
     <div class="live-pulse" aria-live="polite">
       <span class="live-dot"></span>
-      <span class="live-text">Live</span>
+      <span class="live-text" data-i18n="dashboard.live">Live</span>
     </div>
   </section>
 
   <section class="kpi-strip" aria-label="Headline numbers">
     <article class="kpi">
       <p class="kpi-value" id="kpi-inflow"></p>
-      <p class="kpi-label">Patients in flow now</p>
+      <p class="kpi-label" data-i18n="kpi.inflow">Patients in flow now</p>
     </article>
     <article class="kpi">
       <p class="kpi-value" id="kpi-median"></p>
-      <p class="kpi-label">Median end-to-end time</p>
+      <p class="kpi-label" data-i18n="kpi.median">Median end-to-end time</p>
     </article>
     <article class="kpi kpi-warning">
       <p class="kpi-value" id="kpi-longest"></p>
@@ -58,51 +66,55 @@
 
   <section class="funnel" aria-label="Patient flow stages">
     <div class="funnel-stages" id="funnel-stages"></div>
-    <div class="funnel-arrows" aria-hidden="true">
-      <span class="funnel-arrow"></span>
-      <span class="funnel-arrow"></span>
-      <span class="funnel-arrow"></span>
-      <span class="funnel-arrow"></span>
-      <span class="funnel-arrow"></span>
-    </div>
   </section>
 
   <section class="callout callout-warning" id="bottleneck-callout">
-    <div class="callout-icon">!</div>
+    <div class="callout-icon" aria-hidden="true">!</div>
     <div class="callout-body">
-      <h2 class="callout-title">Lab/Imaging is your bottleneck right now.</h2>
-      <p class="callout-text">Median wait is 38 minutes — 13 minutes above the threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.</p>
-      <a class="callout-action" href="/stage-lab">Investigate Lab/Imaging →</a>
+      <h2 class="callout-title" data-i18n="callout.bottleneck.title">Lab/Imaging is your bottleneck right now.</h2>
+      <p class="callout-text" data-i18n="callout.bottleneck.body">Median wait is 38 minutes — 13 minutes above the threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.</p>
+      <a class="callout-action" href="/stage-lab" data-i18n="callout.bottleneck.action">Investigate Lab/Imaging →</a>
     </div>
   </section>
 
 </main>
 
 <script>
-  document.getElementById("user-name").textContent = DATA.hospital.director.name;
-  document.getElementById("user-hospital").textContent = DATA.hospital.name;
-  document.getElementById("now-line").textContent =
-    "Now · " + DATA.now.day + " · " + DATA.now.time;
+  function renderDashboard() {
+    document.getElementById("user-name").textContent = DATA.hospital.director.name;
+    document.getElementById("user-hospital").textContent = DATA.hospital.name;
+    document.getElementById("now-line").textContent =
+      t("dashboard.now") + " · " + DATA.now.day + " · " + DATA.now.time;
 
-  document.getElementById("kpi-inflow").textContent = DATA.kpis.inFlow;
-  document.getElementById("kpi-median").textContent = fmtMin(DATA.kpis.medianEndToEndMin);
-  document.getElementById("kpi-longest").textContent = fmtMin(DATA.kpis.longestWait.min);
-  document.getElementById("kpi-longest-label").textContent =
-    "Longest wait — " + DATA.kpis.longestWait.patient + " · " + DATA.kpis.longestWait.stage;
+    document.getElementById("kpi-inflow").textContent = DATA.kpis.inFlow;
+    document.getElementById("kpi-median").textContent = fmtMin(DATA.kpis.medianEndToEndMin);
+    document.getElementById("kpi-longest").textContent = fmtMin(DATA.kpis.longestWait.min);
+    document.getElementById("kpi-longest-label").textContent =
+      t("kpi.longest") + " — " + DATA.kpis.longestWait.patient + " · " + t(STAGE_KEY_BY_ID.lab);
 
-  const stagesEl = document.getElementById("funnel-stages");
-  DATA.stages.forEach(function (stage, i) {
-    const heat = stageHeat(stage);
-    const tile = document.createElement("a");
-    tile.className = "stage-tile stage-tile-" + heat;
-    tile.href = stage.id === "lab" ? "/stage-lab" : "#";
-    tile.innerHTML =
-      '<p class="stage-name">' + stage.name + '</p>' +
-      '<p class="stage-wait">' + fmtMin(stage.medianWaitMin) + '</p>' +
-      '<p class="stage-count">' + stage.count + ' waiting</p>' +
-      '<span class="stage-heat stage-heat-' + heat + '">' + heat + '</span>';
-    stagesEl.appendChild(tile);
+    const stagesEl = document.getElementById("funnel-stages");
+    stagesEl.innerHTML = "";
+    DATA.stages.forEach(function (stage) {
+      const heat = stageHeat(stage);
+      const tile = document.createElement("a");
+      tile.className = "stage-tile stage-tile-" + heat;
+      tile.href = stage.id === "lab" ? "/stage-lab" : "#";
+      tile.innerHTML =
+        '<p class="stage-name">' + t(STAGE_KEY_BY_ID[stage.id]) + '</p>' +
+        '<p class="stage-wait">' + fmtMin(stage.medianWaitMin) + '</p>' +
+        '<p class="stage-count">' + stage.count + ' ' + t("stage.waiting") + '</p>' +
+        '<span class="stage-heat stage-heat-' + heat + '">' + heat + '</span>';
+      stagesEl.appendChild(tile);
+    });
+  }
+
+  function onLangApplied() { renderDashboard(); }
+
+  document.querySelectorAll(".lang-toggle-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { setLang(btn.dataset.lang); });
   });
+
+  applyLang();
 
   const liveDot = document.querySelector(".live-dot");
   setInterval(function () {

@@ -6,9 +6,10 @@
 <title>Basira — Lab/Imaging</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 <script src="/data.js"></script>
+<script src="/strings.js"></script>
 </head>
 <body class="app-body">
 
@@ -18,96 +19,130 @@
     <span class="brand-latin-sm">Basira</span>
   </div>
   <nav class="app-nav">
-    <a class="app-nav-link app-nav-link-active" href="/basira">Live</a>
-    <a class="app-nav-link" href="/history">History</a>
-    <a class="app-nav-link" href="/settings">Settings</a>
+    <a class="app-nav-link app-nav-link-active" href="/basira" data-i18n="nav.live">Live</a>
+    <a class="app-nav-link" href="/history" data-i18n="nav.history">History</a>
+    <a class="app-nav-link" href="/settings" data-i18n="nav.settings">Settings</a>
   </nav>
-  <div class="app-bar-user">
-    <span class="user-name" id="user-name"></span>
-    <span class="user-hospital" id="user-hospital"></span>
+  <div class="app-bar-tail">
+    <nav class="lang-toggle lang-toggle-inline" aria-label="Language">
+      <button type="button" class="lang-toggle-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-toggle-btn" data-lang="ar">عر</button>
+      <button type="button" class="lang-toggle-btn" data-lang="eg">مصري</button>
+    </nav>
+    <div class="app-bar-user">
+      <span class="user-name" id="user-name"></span>
+      <span class="user-hospital" id="user-hospital"></span>
+    </div>
   </div>
 </header>
 
 <main class="dashboard">
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a class="breadcrumb-link" href="/basira">← Live</a>
+    <a class="breadcrumb-link" href="/basira" data-i18n="lab.breadcrumb.live">← Live</a>
     <span class="breadcrumb-sep">/</span>
-    <span class="breadcrumb-current">Lab/Imaging</span>
+    <span class="breadcrumb-current" data-i18n="lab.title">Lab/Imaging</span>
   </nav>
 
   <section class="dashboard-header">
     <div>
-      <h1 class="dashboard-title">Lab/Imaging</h1>
-      <p class="dashboard-now">7 patients waiting · 38 min median · threshold 25 min</p>
+      <h1 class="dashboard-title" data-i18n="lab.title">Lab/Imaging</h1>
+      <p class="dashboard-now" data-i18n="lab.summary">7 patients waiting · 38 min median · threshold 25 min</p>
     </div>
-    <span class="stage-heat stage-heat-red">Red</span>
+    <span class="stage-heat stage-heat-red" data-i18n="lab.heat.red">Red</span>
   </section>
 
   <section class="lab-queue" aria-label="Patients waiting in Lab/Imaging">
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Patient</th>
-          <th>Test</th>
-          <th>Ordered by</th>
-          <th>Ordered at</th>
-          <th class="data-table-num">Waiting</th>
-        </tr>
-      </thead>
-      <tbody id="lab-queue-body"></tbody>
-    </table>
+    <div class="data-table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th data-i18n="lab.col.patient">Patient</th>
+            <th data-i18n="lab.col.test">Test</th>
+            <th data-i18n="lab.col.orderedBy">Ordered by</th>
+            <th data-i18n="lab.col.orderedAt">Ordered at</th>
+            <th class="data-table-num" data-i18n="lab.col.waiting">Waiting</th>
+          </tr>
+        </thead>
+        <tbody id="lab-queue-body"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="patient-detail" id="patient-detail">
     <header class="patient-detail-head">
       <div>
         <h2 class="patient-detail-title">Ahmed M.</h2>
-        <p class="patient-detail-sub">CT abdomen · ordered by Dr. Hassan at 09:14 · arrived 08:46</p>
+        <p class="patient-detail-sub" data-i18n="lab.detail.sub">CT abdomen · ordered by Dr. Hassan at 09:14 · arrived 08:46</p>
       </div>
-      <span class="patient-flag">Stalled in Lab/Imaging</span>
+      <span class="patient-flag" data-i18n="lab.detail.flag">Stalled in Lab/Imaging</span>
     </header>
 
     <ol class="timeline" id="patient-timeline"></ol>
 
-    <p class="patient-detail-note">
-      Total time in hospital so far: <strong>1h 56m</strong>.
-      Lab/Imaging step alone: <strong>47 min</strong> (avg for this test type: 18 min).
-    </p>
+    <p class="patient-detail-note" data-i18n="lab.detail.note">Total time in hospital so far: 1h 56m. Lab/Imaging step alone: 47 min (avg for this test type: 18 min).</p>
   </section>
 
 </main>
 
 <script>
-  document.getElementById("user-name").textContent = DATA.hospital.director.name;
-  document.getElementById("user-hospital").textContent = DATA.hospital.name;
+  function renderLabPage() {
+    document.getElementById("user-name").textContent = DATA.hospital.director.name;
+    document.getElementById("user-hospital").textContent = DATA.hospital.name;
 
-  const tbody = document.getElementById("lab-queue-body");
-  DATA.labQueue.forEach(function (p, i) {
-    const tr = document.createElement("tr");
-    tr.className = i === 0 ? "data-row data-row-stalled" : "data-row";
-    tr.innerHTML =
-      '<td class="data-cell-name">' + p.name + (i === 0 ? ' <span class="data-flag">stalled</span>' : '') + '</td>' +
-      '<td>' + p.test + '</td>' +
-      '<td>' + p.orderedBy + '</td>' +
-      '<td>' + p.orderedAt + '</td>' +
-      '<td class="data-table-num">' + p.waitMin + ' min</td>';
-    tbody.appendChild(tr);
+    const tbody = document.getElementById("lab-queue-body");
+    tbody.innerHTML = "";
+    DATA.labQueue.forEach(function (p, i) {
+      const tr = document.createElement("tr");
+      tr.className = i === 0 ? "data-row data-row-stalled" : "data-row";
+      const flag = i === 0 ? ' <span class="data-flag">' + t("lab.flag.stalled") + '</span>' : '';
+      tr.innerHTML =
+        '<td class="data-cell-name">' + p.name + flag + '</td>' +
+        '<td>' + p.test + '</td>' +
+        '<td>' + p.orderedBy + '</td>' +
+        '<td>' + p.orderedAt + '</td>' +
+        '<td class="data-table-num">' + p.waitMin + ' ' + t("time.min") + '</td>';
+      tbody.appendChild(tr);
+    });
+
+    const tl = document.getElementById("patient-timeline");
+    tl.innerHTML = "";
+    const stageMap = {
+      "Arrived": "timeline.arrived",
+      "Registration": "stage.registration",
+      "Triage": "stage.triage",
+      "Consultation": "stage.consult",
+      "Lab/Imaging": "stage.lab"
+    };
+    DATA.patientTimeline["Ahmed M."].forEach(function (step) {
+      const li = document.createElement("li");
+      li.className = "timeline-step" +
+        (step.ongoing ? " timeline-step-ongoing" : "") +
+        (step.flag === "stalled" ? " timeline-step-stalled" : "");
+      const stageLabel = stageMap[step.stage] ? t(stageMap[step.stage]) : step.stage;
+      const durTxt = step.durationMin == null
+        ? '—'
+        : (step.ongoing
+            ? step.durationMin + ' ' + t("time.min") + ' · ' + t("status.ongoing")
+            : step.durationMin + ' ' + t("time.min"));
+      li.innerHTML =
+        '<div class="timeline-time">' + step.at + '</div>' +
+        '<div class="timeline-marker" aria-hidden="true"></div>' +
+        '<div class="timeline-body">' +
+          '<p class="timeline-stage">' + stageLabel + '</p>' +
+          '<p class="timeline-duration">' + durTxt + '</p>' +
+        '</div>';
+      tl.appendChild(li);
+    });
+  }
+
+  function onLangApplied() { renderLabPage(); }
+
+  document.querySelectorAll(".lang-toggle-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { setLang(btn.dataset.lang); });
   });
 
-  const tl = document.getElementById("patient-timeline");
-  DATA.patientTimeline["Ahmed M."].forEach(function (step) {
-    const li = document.createElement("li");
-    li.className = "timeline-step" + (step.ongoing ? " timeline-step-ongoing" : "") + (step.flag === "stalled" ? " timeline-step-stalled" : "");
-    li.innerHTML =
-      '<div class="timeline-time">' + step.at + '</div>' +
-      '<div class="timeline-marker" aria-hidden="true"></div>' +
-      '<div class="timeline-body">' +
-        '<p class="timeline-stage">' + step.stage + '</p>' +
-        '<p class="timeline-duration">' + (step.durationMin == null ? '—' : (step.ongoing ? step.durationMin + ' min · ongoing' : step.durationMin + ' min')) + '</p>' +
-      '</div>';
-    tl.appendChild(li);
-  });
+  applyLang();
 </script>
 
 </body>

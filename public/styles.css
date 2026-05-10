@@ -256,6 +256,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
   padding-block: var(--space-md);
   padding-inline: var(--space-xl);
   background: var(--color-surface);
@@ -263,6 +265,13 @@ button {
   position: sticky;
   inset-block-start: 0;
   z-index: 10;
+}
+
+@media (max-width: 720px) {
+  .app-bar {
+    padding-inline: var(--space-md);
+    gap: var(--space-sm);
+  }
 }
 
 .app-bar-brand {
@@ -318,6 +327,10 @@ button {
   text-align: end;
 }
 
+@media (max-width: 720px) {
+  .app-bar-user { display: none; }
+}
+
 .user-name {
   font-weight: 600;
   font-size: 0.875rem;
@@ -340,6 +353,12 @@ button {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+}
+
+@media (max-width: 720px) {
+  .dashboard { padding: var(--space-md); gap: var(--space-lg); }
+  .dashboard-title { font-size: 1.5rem; }
+  .dashboard-header { flex-direction: column; align-items: stretch; }
 }
 
 .dashboard-header {
@@ -397,6 +416,10 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
+}
+
+@media (max-width: 720px) {
+  .kpi-strip { grid-template-columns: 1fr; }
 }
 
 .kpi {
@@ -646,6 +669,12 @@ button {
    DATA TABLES
    ============================================================ */
 
+.data-table-scroll {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
 .data-table {
   inline-size: 100%;
   border-collapse: collapse;
@@ -653,6 +682,12 @@ button {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
+}
+
+.data-table-scroll .data-table {
+  min-inline-size: 520px;
+  border: none;
+  border-radius: 0;
 }
 
 .data-table th {
@@ -763,6 +798,11 @@ button {
   grid-template-columns: 60px 24px 1fr;
   gap: var(--space-md);
   align-items: start;
+}
+
+@media (max-width: 720px) {
+  .timeline-step { grid-template-columns: 48px 18px 1fr; gap: var(--space-sm); }
+  .timeline-time { font-size: 0.75rem; }
 }
 
 .timeline-time {
@@ -906,6 +946,12 @@ button {
   align-items: end;
   padding-block-end: var(--space-md);
   border-block-end: 1px solid var(--color-border);
+}
+
+@media (max-width: 720px) {
+  .chart { block-size: 200px; gap: 4px; }
+  .chart-title { font-size: 1rem; }
+  .chart-legend { font-size: 0.6875rem; gap: var(--space-sm); }
 }
 
 .chart-col {
@@ -1155,3 +1201,104 @@ button {
 .lab-queue {
   display: block;
 }
+
+/* ============================================================
+   LANGUAGE TOGGLE
+   ============================================================ */
+
+.lang-toggle {
+  position: fixed;
+  inset-block-start: var(--space-md);
+  inset-inline-end: var(--space-md);
+  display: inline-flex;
+  gap: 2px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  box-shadow: var(--shadow-1);
+  z-index: 50;
+}
+
+.lang-toggle-inline {
+  position: static;
+  box-shadow: none;
+  background: var(--color-surface-low);
+}
+
+.app-bar-tail {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+@media (max-width: 720px) {
+  .app-bar-tail { gap: var(--space-sm); }
+}
+
+.lang-toggle-btn {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  color: var(--color-text-muted);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.lang-toggle-btn:hover {
+  color: var(--color-primary-dark);
+}
+
+.lang-toggle-active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.lang-toggle-active:hover {
+  color: white;
+}
+
+/* ============================================================
+   ARABIC TYPOGRAPHY
+   ============================================================ */
+
+html[lang="ar"] body,
+html[lang="eg"] body {
+  font-family: "Cairo", "Inter", system-ui, sans-serif;
+}
+
+html[lang="ar"] .dashboard-title,
+html[lang="ar"] .login-title,
+html[lang="ar"] .patient-detail-title,
+html[lang="ar"] .callout-title,
+html[lang="ar"] .chart-title,
+html[lang="ar"] .table-card-title,
+html[lang="ar"] .settings-card-title,
+html[lang="eg"] .dashboard-title,
+html[lang="eg"] .login-title,
+html[lang="eg"] .patient-detail-title,
+html[lang="eg"] .callout-title,
+html[lang="eg"] .chart-title,
+html[lang="eg"] .table-card-title,
+html[lang="eg"] .settings-card-title {
+  font-family: "Cairo", "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 700;
+}
+
+html[lang="ar"] .brand-arabic,
+html[lang="eg"] .brand-arabic {
+  font-family: "Cairo", system-ui, sans-serif;
+}
+
+html[lang="ar"] .breadcrumb-link,
+html[lang="eg"] .breadcrumb-link {
+  /* Arrow direction: in RTL the "back" arrow naturally flips via Unicode */
+}
+
+/* RTL: pulse dot box-shadow doesn't depend on direction; nothing to flip.
+   RTL: timeline marker stays top-anchored; grid columns auto-flip via dir.
+   RTL: chart bars stack bottom-up regardless of direction. */
