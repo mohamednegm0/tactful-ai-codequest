@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basira — Live patient flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="/data.js"></script>
+</head>
+<body class="app-body">
+
+<header class="app-bar">
+  <div class="app-bar-brand">
+    <span class="brand-arabic-sm">بصيرة</span>
+    <span class="brand-latin-sm">Basira</span>
+  </div>
+  <nav class="app-nav">
+    <a class="app-nav-link app-nav-link-active" href="/basira.html">Live</a>
+    <a class="app-nav-link" href="/history.html">History</a>
+    <a class="app-nav-link" href="/settings.html">Settings</a>
+  </nav>
+  <div class="app-bar-user">
+    <span class="user-name" id="user-name"></span>
+    <span class="user-hospital" id="user-hospital"></span>
+  </div>
+</header>
+
+<main class="dashboard">
+
+  <section class="dashboard-header">
+    <div>
+      <h1 class="dashboard-title">Live patient flow</h1>
+      <p class="dashboard-now" id="now-line"></p>
+    </div>
+    <div class="live-pulse" aria-live="polite">
+      <span class="live-dot"></span>
+      <span class="live-text">Live</span>
+    </div>
+  </section>
+
+  <section class="kpi-strip" aria-label="Headline numbers">
+    <article class="kpi">
+      <p class="kpi-value" id="kpi-inflow"></p>
+      <p class="kpi-label">Patients in flow now</p>
+    </article>
+    <article class="kpi">
+      <p class="kpi-value" id="kpi-median"></p>
+      <p class="kpi-label">Median end-to-end time</p>
+    </article>
+    <article class="kpi kpi-warning">
+      <p class="kpi-value" id="kpi-longest"></p>
+      <p class="kpi-label" id="kpi-longest-label"></p>
+    </article>
+  </section>
+
+  <section class="funnel" aria-label="Patient flow stages">
+    <div class="funnel-stages" id="funnel-stages"></div>
+    <div class="funnel-arrows" aria-hidden="true">
+      <span class="funnel-arrow"></span>
+      <span class="funnel-arrow"></span>
+      <span class="funnel-arrow"></span>
+      <span class="funnel-arrow"></span>
+      <span class="funnel-arrow"></span>
+    </div>
+  </section>
+
+  <section class="callout callout-warning" id="bottleneck-callout">
+    <div class="callout-icon">!</div>
+    <div class="callout-body">
+      <h2 class="callout-title">Lab/Imaging is your bottleneck right now.</h2>
+      <p class="callout-text">Median wait is 38 minutes — 13 minutes above the threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.</p>
+      <a class="callout-action" href="/stage-lab.html">Investigate Lab/Imaging →</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById("user-name").textContent = DATA.hospital.director.name;
+  document.getElementById("user-hospital").textContent = DATA.hospital.name;
+  document.getElementById("now-line").textContent =
+    "Now · " + DATA.now.day + " · " + DATA.now.time;
+
+  document.getElementById("kpi-inflow").textContent = DATA.kpis.inFlow;
+  document.getElementById("kpi-median").textContent = fmtMin(DATA.kpis.medianEndToEndMin);
+  document.getElementById("kpi-longest").textContent = fmtMin(DATA.kpis.longestWait.min);
+  document.getElementById("kpi-longest-label").textContent =
+    "Longest wait — " + DATA.kpis.longestWait.patient + " · " + DATA.kpis.longestWait.stage;
+
+  const stagesEl = document.getElementById("funnel-stages");
+  DATA.stages.forEach(function (stage, i) {
+    const heat = stageHeat(stage);
+    const tile = document.createElement("a");
+    tile.className = "stage-tile stage-tile-" + heat;
+    tile.href = stage.id === "lab" ? "/stage-lab.html" : "#";
+    tile.innerHTML =
+      '<p class="stage-name">' + stage.name + '</p>' +
+      '<p class="stage-wait">' + fmtMin(stage.medianWaitMin) + '</p>' +
+      '<p class="stage-count">' + stage.count + ' waiting</p>' +
+      '<span class="stage-heat stage-heat-' + heat + '">' + heat + '</span>';
+    stagesEl.appendChild(tile);
+  });
+
+  const liveDot = document.querySelector(".live-dot");
+  setInterval(function () {
+    liveDot.classList.toggle("live-dot-on");
+  }, 1500);
+</script>
+
+</body>
+</html>

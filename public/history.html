@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basira — History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="/data.js"></script>
+</head>
+<body class="app-body">
+
+<header class="app-bar">
+  <div class="app-bar-brand">
+    <span class="brand-arabic-sm">بصيرة</span>
+    <span class="brand-latin-sm">Basira</span>
+  </div>
+  <nav class="app-nav">
+    <a class="app-nav-link" href="/basira.html">Live</a>
+    <a class="app-nav-link app-nav-link-active" href="/history.html">History</a>
+    <a class="app-nav-link" href="/settings.html">Settings</a>
+  </nav>
+  <div class="app-bar-user">
+    <span class="user-name" id="user-name"></span>
+    <span class="user-hospital" id="user-hospital"></span>
+  </div>
+</header>
+
+<main class="dashboard">
+
+  <section class="dashboard-header">
+    <div>
+      <h1 class="dashboard-title">Bottleneck history</h1>
+      <p class="dashboard-now">Last 7 days · median wait per stage, per day</p>
+    </div>
+    <div class="filter-group">
+      <label class="filter-label" for="filter-department">Department</label>
+      <select class="field-input filter-select" id="filter-department" name="department">
+        <option>All departments</option>
+        <option>General Medicine</option>
+        <option>Pediatrics</option>
+        <option>Radiology</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="callout callout-insight">
+    <div class="callout-icon callout-icon-insight">i</div>
+    <div class="callout-body">
+      <h2 class="callout-title">Insight</h2>
+      <p class="callout-text" id="insight-text"></p>
+    </div>
+  </section>
+
+  <section class="chart-card">
+    <h2 class="chart-title">Median wait by stage (minutes)</h2>
+    <div class="chart-legend">
+      <span class="legend-item legend-reg">Registration</span>
+      <span class="legend-item legend-tri">Triage</span>
+      <span class="legend-item legend-con">Consultation</span>
+      <span class="legend-item legend-lab">Lab/Imaging</span>
+      <span class="legend-item legend-pha">Pharmacy</span>
+      <span class="legend-item legend-dis">Discharge</span>
+    </div>
+    <div class="chart" id="chart" role="img" aria-label="Stacked bar chart of median wait by stage across last 7 days"></div>
+    <p class="chart-axis">Mon  ·  Tue  ·  Wed  ·  Thu  ·  Fri  ·  Sat  ·  Sun</p>
+  </section>
+
+  <section class="table-card">
+    <h2 class="table-card-title">Lab orders by doctor — last 7 days</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Doctor</th>
+          <th class="data-table-num">Lab orders</th>
+          <th class="data-table-num">Avg turnaround</th>
+        </tr>
+      </thead>
+      <tbody id="doctor-table-body"></tbody>
+    </table>
+    <p class="table-card-note">Dr. Hassan averages 23 min above the next-fastest doctor. Worth a conversation about CT order patterns.</p>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById("user-name").textContent = DATA.hospital.director.name;
+  document.getElementById("user-hospital").textContent = DATA.hospital.name;
+  document.getElementById("insight-text").textContent = DATA.history.insight;
+
+  const chart = document.getElementById("chart");
+  const maxStack = 200;
+  DATA.history.last7Days.forEach(function (day) {
+    const col = document.createElement("div");
+    col.className = "chart-col";
+    const total = day.reg + day.tri + day.con + day.lab + day.pha + day.dis;
+    const segments = [
+      { cls: "seg seg-reg", v: day.reg },
+      { cls: "seg seg-tri", v: day.tri },
+      { cls: "seg seg-con", v: day.con },
+      { cls: "seg seg-lab", v: day.lab },
+      { cls: "seg seg-pha", v: day.pha },
+      { cls: "seg seg-dis", v: day.dis }
+    ];
+    segments.forEach(function (s) {
+      const seg = document.createElement("div");
+      seg.className = s.cls;
+      const pct = Math.round((s.v / maxStack) * 100);
+      seg.style.setProperty("--seg-height", pct + "%");
+      seg.title = s.v + " min";
+      col.appendChild(seg);
+    });
+    const totalLabel = document.createElement("p");
+    totalLabel.className = "chart-total";
+    totalLabel.textContent = total + "m";
+    col.appendChild(totalLabel);
+    chart.appendChild(col);
+  });
+
+  const dt = document.getElementById("doctor-table-body");
+  DATA.history.perDoctor.forEach(function (d, i) {
+    const tr = document.createElement("tr");
+    tr.className = "data-row";
+    tr.innerHTML =
+      '<td class="data-cell-name">' + d.doctor + (i === 0 ? ' <span class="data-flag">slowest</span>' : '') + '</td>' +
+      '<td class="data-table-num">' + d.labOrders + '</td>' +
+      '<td class="data-table-num">' + d.avgTurnaroundMin + ' min</td>';
+    dt.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>

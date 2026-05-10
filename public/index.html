@@ -3,13 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tactful AI</title>
+<title>Basira — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
-<main class="placeholder">
-  <h1 class="placeholder-title">Tactful AI</h1>
-  <p class="placeholder-note">soon</p>
+<body class="login-body">
+
+<main class="login-main">
+
+  <section class="login-brand">
+    <div class="brand-mark">
+      <span class="brand-arabic">بصيرة</span>
+      <span class="brand-latin">Basira</span>
+    </div>
+    <p class="brand-tagline">Patient flow you can actually see.</p>
+    <p class="brand-sub">by Medicena</p>
+  </section>
+
+  <section class="login-card">
+    <h1 class="login-title">Sign in to your hospital</h1>
+    <p class="login-helptext">Use your Clinisys credentials to continue.</p>
+
+    <form class="login-form" action="/basira.html" method="get">
+      <label class="field">
+        <span class="field-label">Hospital</span>
+        <select class="field-input" name="hospital">
+          <option>El Salam Specialist Hospital — New Cairo</option>
+          <option>Andalusia Maadi (demo)</option>
+          <option>Heliopolis Polyclinic (demo)</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field-label">Email</span>
+        <input class="field-input" type="email" name="email" value="mona.khalil@elsalam.eg" autocomplete="email">
+      </label>
+
+      <label class="field">
+        <span class="field-label">Password</span>
+        <input class="field-input" type="password" name="password" value="••••••••••" autocomplete="current-password">
+      </label>
+
+      <button class="primary-action" type="submit">Sign in</button>
+    </form>
+
+    <p class="login-note">Demo build. Any sign-in opens the dashboard with mock data.</p>
+  </section>
+
 </main>
+
+<footer class="login-footer">
+  <span>Basira · Medicena · Cairo</span>
+  <span class="login-footer-sep">·</span>
+  <span>Demo build for Tactful PO take-home</span>
+</footer>
+
 </body>
 </html>

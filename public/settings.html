@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basira — Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script src="/data.js"></script>
+</head>
+<body class="app-body">
+
+<header class="app-bar">
+  <div class="app-bar-brand">
+    <span class="brand-arabic-sm">بصيرة</span>
+    <span class="brand-latin-sm">Basira</span>
+  </div>
+  <nav class="app-nav">
+    <a class="app-nav-link" href="/basira.html">Live</a>
+    <a class="app-nav-link" href="/history.html">History</a>
+    <a class="app-nav-link app-nav-link-active" href="/settings.html">Settings</a>
+  </nav>
+  <div class="app-bar-user">
+    <span class="user-name" id="user-name"></span>
+    <span class="user-hospital" id="user-hospital"></span>
+  </div>
+</header>
+
+<main class="dashboard">
+
+  <section class="dashboard-header">
+    <div>
+      <h1 class="dashboard-title">Settings</h1>
+      <p class="dashboard-now">Stage thresholds and integrations</p>
+    </div>
+  </section>
+
+  <section class="settings-grid">
+
+    <article class="settings-card">
+      <h2 class="settings-card-title">Stage thresholds</h2>
+      <p class="settings-card-sub">Median wait above the red threshold marks a stage as a bottleneck on the Live view.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th class="data-table-num">Yellow</th>
+            <th class="data-table-num">Red</th>
+          </tr>
+        </thead>
+        <tbody id="threshold-body"></tbody>
+      </table>
+    </article>
+
+    <article class="settings-card">
+      <h2 class="settings-card-title">Integrations</h2>
+      <p class="settings-card-sub">Basira sits on top of your existing systems. We pull data; we don't replace them.</p>
+      <ul class="integration-list" id="integration-list"></ul>
+    </article>
+
+    <article class="settings-card settings-card-wide">
+      <h2 class="settings-card-title">Localisation</h2>
+      <div class="locale-row">
+        <div class="locale-info">
+          <p class="locale-label">Interface language</p>
+          <p class="locale-sub">Production: Arabic-first with English toggle. Demo: English only.</p>
+        </div>
+        <div class="locale-toggle">
+          <button class="chip chip-active">English</button>
+          <button class="chip chip-disabled" disabled>العربية (Phase 2)</button>
+        </div>
+      </div>
+      <div class="locale-row">
+        <div class="locale-info">
+          <p class="locale-label">Reading direction</p>
+          <p class="locale-sub">Layout uses logical CSS properties — flips automatically when language switches to Arabic.</p>
+        </div>
+        <div class="locale-toggle">
+          <button class="chip chip-active">LTR</button>
+          <button class="chip chip-disabled" disabled>RTL (Phase 2)</button>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<script>
+  document.getElementById("user-name").textContent = DATA.hospital.director.name;
+  document.getElementById("user-hospital").textContent = DATA.hospital.name;
+
+  const tb = document.getElementById("threshold-body");
+  DATA.thresholds.forEach(function (t) {
+    const tr = document.createElement("tr");
+    tr.className = "data-row";
+    tr.innerHTML =
+      '<td class="data-cell-name">' + t.stage + '</td>' +
+      '<td class="data-table-num">' + t.yellow + ' min</td>' +
+      '<td class="data-table-num">' + t.red + ' min</td>';
+    tb.appendChild(tr);
+  });
+
+  const il = document.getElementById("integration-list");
+  DATA.integrations.forEach(function (i) {
+    const li = document.createElement("li");
+    li.className = "integration-item integration-item-" + i.status;
+    let badge = "";
+    if (i.status === "connected") badge = '<span class="integration-badge integration-badge-on">Connected</span>';
+    if (i.status === "coming-q2") badge = '<span class="integration-badge integration-badge-soon">Coming Q2</span>';
+    li.innerHTML =
+      '<div class="integration-head">' +
+        '<p class="integration-name">' + i.name + '</p>' +
+        badge +
+      '</div>' +
+      '<p class="integration-desc">' + i.desc + '</p>' +
+      (i.note ? '<p class="integration-note">' + i.note + '</p>' : '');
+    il.appendChild(li);
+  });
+</script>
+
+</body>
+</html>
