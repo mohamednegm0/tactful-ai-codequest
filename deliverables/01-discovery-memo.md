@@ -17,8 +17,8 @@ The hospital **Operations Director** (or COO at smaller hospitals). Accountable 
 
 The instinctive answer to "patient flow is broken" is a queue board or WhatsApp check-in. I went deeper:
 
-- The bottleneck people *see* (front desk) isn't the one that matters. Ops literature shows the choke sits inside clinical workflow — consultant late-arrival (20-49 min) and lab/imaging turnaround. Patients wait *invisibly*.
-- Egypt has tools but a gap: Vezeeta does bookings; Clinisys is a Lab Information System (not hospital-wide); local HIS vendors handle records. None surface a live patient-flow view for the ops director. Epic's Capacity Command Center is the global analogue, and no Egyptian private hospital runs Epic.
+- The bottleneck people *see* (front desk) isn't the one that matters. Ops literature puts the choke inside clinical workflow — consultant late-arrival and lab/imaging turnaround (Al Habib Medical Journal 2024: waiting-to-see-doctor was 85.7% of total OPD time). Patients wait *invisibly*.
+- Egypt has tools but a gap: Vezeeta owns bookings (10M+ patients, 80 cities); Cleopatra runs an integrated Clinisys HIS/ERP/lab suite; smaller hospitals use local vendors or paper. None surface a live patient-flow ops view for the director. Epic's Capacity Command Center (Johns Hopkins, Yale, UC San Diego) is the global analogue, and no Egyptian private hospital runs Epic.
 
 The wedge is **visibility, not replacement**. Basira sits on top of whatever the hospital runs and surfaces what nobody else does: *where are patients stalled right now, and why?* The director clicks one screen, sees Lab is red, drills in, finds Dr. Hassan's CT orders averaging 47 min vs 18 baseline. Tomorrow's conversation is grounded in a number.
 

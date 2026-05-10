@@ -20,7 +20,7 @@ The brief: unscripted is fine, mistakes are fine, they want to hear how you reas
 
 > "**One**, the front desk isn't the bottleneck. Hospital ops literature consistently shows the choke is *inside* the clinical workflow — consultant late-arrival, lab and imaging turnaround. Patients wait invisibly. A queue board solves a visible problem that isn't the real one.
 
-> "**Two**, Egypt has tools but a real gap. Vezeeta does bookings. Clinisys is a Lab Information System — labs and imaging — not hospital-wide. The hospital's HIS handles records. None of them surface a live patient-flow view for the operations director. Epic has Capacity Command Center globally, but no Egyptian private hospital is running Epic.
+> "**Two**, Egypt has tools but a real gap. Vezeeta owns patient bookings — 10 million patients across 80 cities — but it's appointments and payments, not operations. Cleopatra Hospitals runs an integrated Clinisys HIS suite, smaller hospitals run local vendors, and most of the country is still paper — only about 314 hospitals had EHR as of October 2024. None of these systems surface a live patient-flow view for the director. Epic's Capacity Command Center, used at Johns Hopkins and Yale, is the global analogue — but no Egyptian private hospital runs Epic.
 
 > "So I picked a different wedge: **visibility, not replacement**. I called it Basira — بصيرة — Arabic for *insight*. The deeper sense of seeing what others miss. The product makes the invisible clinical queue visible to the one person who can act on it: the operations director."
 

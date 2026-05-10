@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Basira mark</title>
+  <desc id="desc">A teal eye-shaped aperture with connected flow points, representing visibility into patient movement.</desc>
+  <defs>
+    <linearGradient id="base" x1="18" y1="12" x2="112" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b636d"/>
+      <stop offset="0.62" stop-color="#004a52"/>
+      <stop offset="1" stop-color="#0a1f21"/>
+    </linearGradient>
+    <linearGradient id="iris" x1="48" y1="44" x2="82" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7ef0ff"/>
+      <stop offset="1" stop-color="#29abb9"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0b636d" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#base)" filter="url(#softShadow)"/>
+  <path d="M24 65.5C36.2 44.5 50.7 34 64 34s27.8 10.5 40 31.5C91.8 86.5 77.3 97 64 97S36.2 86.5 24 65.5Z" fill="#e9fdff"/>
+  <circle cx="64" cy="65" r="19" fill="url(#iris)"/>
+  <circle cx="64" cy="65" r="8.5" fill="#004a52"/>
+  <circle cx="68" cy="59" r="4" fill="#ffffff" opacity="0.9"/>
+  <path d="M38 83c7.5 7.4 16.4 11.4 26 11.4 10.1 0 18.9-4 26-11.4" fill="none" stroke="#7ef0ff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M41.5 50.5C48 45.2 55.4 42.6 64 42.6c8.7 0 16.2 2.7 22.5 7.9" fill="none" stroke="#29abb9" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="38" cy="83" r="5.5" fill="#eab308"/>
+  <circle cx="90" cy="83" r="5.5" fill="#eab308"/>
+</svg>
