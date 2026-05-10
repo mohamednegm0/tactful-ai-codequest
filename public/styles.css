@@ -1309,6 +1309,7 @@ button {
   display: flex;
   align-items: center;
   gap: var(--space-md);
+  margin-inline-start: auto;
 }
 
 @media (max-width: 720px) {
