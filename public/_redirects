@@ -1,7 +1,5 @@
 # Cloudflare Pages redirects
 # Submission shortcuts for Tactful PO take-home
 
-/project   https://github.com/mohamednegm0/tactful-ai-codequest   302
 /repo      https://github.com/mohamednegm0/tactful-ai-codequest   302
-
-# /video    PASTE_VIDEO_URL_HERE   302
+/github    https://github.com/mohamednegm0/tactful-ai-codequest   302
