@@ -24,7 +24,7 @@ This prototype was built end-to-end with AI assistance, but the differentiator w
 | **Custom CLAUDE.md** | Project-level constitution: stack rules, output style (no AI slop, no em dashes, surgical edits), separation of concerns, simplicity gates. Made the assistant a disciplined collaborator instead of a verbose intern. |
 | **Custom Claude hook** | A pre-edit hook (`.claude/hooks/check-css-rules.mjs`) that scans every file write before it lands. It blocks any CSS using physical properties (`margin-left`, `padding-right`, `text-align: left`) and forces logical equivalents (`margin-inline-start`, `text-align: start`). It also blocks inline `style=` attributes in markup. The result: the prototype is RTL-ready by construction. Switching to Arabic is `dir="rtl"` plus a string file, not a stylesheet rewrite. |
 | **Persistent memory rules** | Two feedback rules saved to Claude's memory (`feedback_rtl_logical.md`, `feedback_separation_concerns.md`) so the same constraints survive across sessions and apply to future projects without restating. |
-| **Custom Egyptian-Arabic skill** | A user-level Skill (`~/.claude/skills/egyptian-arabic/SKILL.md`) — a guide for translating UI/copy into real Egyptian dialect, not Modern Standard Arabic. Will inform Phase 2 Arabic strings. The brand name *Basira* (بصيرة, meaning "insight") came from this thinking, not from English-first translation. |
+| **Custom Egyptian-Arabic skill** | A user-level Skill (`~/.claude/skills/egyptian-arabic/SKILL.md`) — a guide for translating UI/copy into real Egyptian dialect, not Modern Standard Arabic. Used to write the trilingual strings file shipping in the prototype today (English, MSA, Egyptian). The brand name *Basira* (بصيرة, meaning "insight") came from this thinking, not from English-first translation. |
 | **Stitch (Google's AI design tool)** | Generated the design system: colors (deep teal `#0b636d`, secondary cyan, gold for warnings), typography (Plus Jakarta Sans + Inter), spacing scale, component tokens. Fetched via Stitch's MCP server and exported to `DESIGN.md` + `design-tokens.json`. |
 | **Bun + TypeScript + HTMX** | Stack chosen deliberately: no build step, no framework boilerplate, static HTML + 30 lines of vanilla JS per screen. The grader can View Source and immediately understand the data shape. Reads as honest hand-written code, not a generated v0 mockup. |
 | **GitHub Actions + Cloudflare Pages + Wrangler CLI** | Push-to-deploy pipeline. Every commit goes live in ~30 seconds. API token stored as a GitHub Secret. Real production infrastructure, set up in this session. |
@@ -35,9 +35,18 @@ A typical PO take-home produces a v0 mockup: clickable, beautiful, throwaway. I 
 
 The argument for the role: this is the workflow I'd bring into a real product team. Instrument the assistant with project constraints, then move fast inside them. The hook is to AI-coding what a linter is to engineering — automated discipline, not after-the-fact review.
 
+## What ships with the prototype today
+
+- Five screens, all reachable from the nav, with mock data hardcoded in `data.js`
+- Trilingual UI — English, Modern Standard Arabic, Egyptian Arabic — with persistent language preference
+- Full dark mode with persistent theme preference
+- RTL layout that flips correctly for Arabic without a single CSS rewrite (the hook enforces it)
+- A `/project` landing page that indexes the four written deliverables for non-technical reviewers
+- A `/video` page with the embedded walkthrough
+
 ## What I would add with more time
 
-- A short `<details>`-collapsed "Day in the life" demo recording embedded on the dashboard
+- A short "Day in the life" demo recording inline on the dashboard
 - Real-time toggle to demo a "what if Dr. Hassan moves to fewer CT orders?" simulation
 - Streamline icons (API key wired in `.env`, not yet rendered)
-- Arabic UI proof — the CSS already supports it; just needs a strings file
+- Live tablet-input demo for Tier 2 onboarding

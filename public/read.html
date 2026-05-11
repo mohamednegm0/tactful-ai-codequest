@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basira — Read</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/basira-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<script src="/strings.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+</head>
+<body class="login-body">
+
+<div class="floating-controls">
+  <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span class="theme-toggle-icon">☾</span>
+  </button>
+</div>
+
+<main class="doc-page">
+
+  <header class="doc-page-header">
+    <a class="doc-back" href="/project">← Back to deliverables</a>
+    <a class="doc-brand" href="/">
+      <img class="brand-logo-img" src="/assets/basira-mark.svg" alt="" aria-hidden="true">
+      <span class="brand-arabic-sm">بصيرة</span>
+      <span class="brand-latin-sm">Basira</span>
+    </a>
+  </header>
+
+  <article class="doc-content" id="doc-content">
+    <p class="doc-loading">Loading…</p>
+  </article>
+
+  <footer class="doc-footer">
+    <a class="doc-footer-link" id="doc-source-link" href="#" target="_blank" rel="noopener">View source on GitHub →</a>
+  </footer>
+
+</main>
+
+<script>
+  const DOCS = {
+    "memo":        { file: "01-discovery-memo.md",         title: "Discovery & framing memo" },
+    "outline":     { file: "02-solution-outline.md",       title: "Solution outline" },
+    "ai-tools":    { file: "03-ai-tools-and-prototype.md", title: "AI tools & prototype notes" },
+    "measurement": { file: "04-measurement-plan.md",       title: "Measurement plan" }
+  };
+
+  const params = new URLSearchParams(location.search);
+  const key = params.get("doc") || "memo";
+  const doc = DOCS[key] || DOCS["memo"];
+
+  document.title = "Basira — " + doc.title;
+  const rawUrl = "https://raw.githubusercontent.com/mohamednegm0/tactful-ai-codequest/main/deliverables/" + doc.file;
+  const ghUrl = "https://github.com/mohamednegm0/tactful-ai-codequest/blob/main/deliverables/" + doc.file;
+  document.getElementById("doc-source-link").href = ghUrl;
+
+  fetch(rawUrl)
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
+    .then(function (md) {
+      document.getElementById("doc-content").innerHTML = marked.parse(md);
+    })
+    .catch(function () {
+      document.getElementById("doc-content").innerHTML =
+        '<p class="doc-error">Could not load the document. <a href="' + ghUrl + '">Open it on GitHub instead</a>.</p>';
+    });
+
+  applyTheme();
+</script>
+
+</body>
+</html>

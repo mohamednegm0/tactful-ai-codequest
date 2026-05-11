@@ -33,9 +33,9 @@ End-to-end, the director closes the loop in 90 seconds. That's the demo.
 2. **Live patient flow** *(the money screen)* — 6-stage funnel with count + median wait per stage, heatmap, and a single bottleneck callout that names the action.
 3. **Stage drill-down (Lab/Imaging)** — patients in this stage now, sorted by wait. Click expands a per-patient timeline showing where they stalled.
 4. **History** — 7-day stacked-bar by stage, with a written insight ("Lab is your bottleneck on Tue/Thu") and a per-doctor breakdown.
-5. **Settings + integrations** — configurable thresholds, integration tiles (HIS, Vezeeta, Clinisys connected; WhatsApp Patient Updates marked *Coming Q2 — requires compliance partner*). Frames the roadmap honestly.
+5. **Settings + integrations** — configurable stage thresholds, integration tiles (HIS, Clinisys lab, Vezeeta connected; WhatsApp Patient Updates marked *Coming Q2 — requires compliance partner*). Frames the roadmap honestly.
 
-The Settings page also flags localisation: English/LTR active in the demo, Arabic/RTL queued for Phase 2. The CSS already uses logical properties, so flipping is a config change, not a rewrite.
+The prototype ships trilingual — English, Modern Standard Arabic, and Egyptian Arabic — with full RTL and dark mode. A custom pre-edit hook blocks any CSS that would break right-to-left, so the same files render LTR for English and RTL for Arabic with no rewrite.
 
 ## Commercial fit (one paragraph)
 

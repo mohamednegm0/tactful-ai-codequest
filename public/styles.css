@@ -1859,6 +1859,228 @@ html[data-theme="dark"] .brand-logo-img {
 }
 
 /* ============================================================
+   DOC READER PAGE (/read?doc=...)
+   ============================================================ */
+
+.doc-page {
+  max-inline-size: 760px;
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.doc-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.doc-back {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.doc-back:hover {
+  color: var(--color-primary);
+}
+
+.doc-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.doc-content {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.doc-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  margin: 0 0 var(--space-md) 0;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.doc-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin: var(--space-xl) 0 var(--space-sm) 0;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  padding-block-start: var(--space-md);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.doc-content h2:first-of-type {
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
+.doc-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: var(--space-lg) 0 var(--space-xs) 0;
+}
+
+.doc-content p {
+  margin: 0 0 var(--space-md) 0;
+}
+
+.doc-content strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.doc-content em {
+  color: var(--color-text);
+}
+
+.doc-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.doc-content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.doc-content ul,
+.doc-content ol {
+  margin: 0 0 var(--space-md) 0;
+  padding-inline-start: 1.5rem;
+}
+
+.doc-content li {
+  margin-block-end: 0.5rem;
+}
+
+.doc-content li > ul,
+.doc-content li > ol {
+  margin-block: 0.5rem 0;
+}
+
+.doc-content blockquote {
+  margin: var(--space-md) 0;
+  padding: var(--space-md) var(--space-lg);
+  border-inline-start: 3px solid var(--color-primary);
+  background: var(--color-primary-tint);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+  color: var(--color-text);
+}
+
+.doc-content blockquote p:last-child {
+  margin-block-end: 0;
+}
+
+.doc-content code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  background: var(--color-surface-low);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.doc-content pre {
+  background: var(--color-surface-low);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  overflow-x: auto;
+  margin: var(--space-md) 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.doc-content pre code {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+}
+
+.doc-content hr {
+  border: 0;
+  border-block-start: 1px solid var(--color-border);
+  margin: var(--space-xl) 0;
+}
+
+.doc-content table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: 0.9375rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.doc-content table th,
+.doc-content table td {
+  padding: 0.625rem 0.875rem;
+  text-align: start;
+  border-block-end: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.doc-content table th {
+  background: var(--color-surface-low);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.doc-content table tr:last-child td {
+  border-block-end: 0;
+}
+
+.doc-loading,
+.doc-error {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: var(--space-xl);
+}
+
+.doc-footer {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--space-md);
+}
+
+.doc-footer-link {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.doc-footer-link:hover {
+  color: var(--color-primary);
+}
+
+/* ============================================================
    THEME TOGGLE BUTTON
    ============================================================ */
 
