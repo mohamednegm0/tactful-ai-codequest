@@ -372,3 +372,12 @@ function applyLang() {
 
   if (typeof onLangApplied === "function") onLangApplied(lang);
 }
+
+function initialsFor(name) {
+  if (!name) return "";
+  const cleaned = name.replace(/[.]/g, "").split(/\s+/).filter(function (w) {
+    return w && w.length > 1;
+  });
+  const pick = cleaned.slice(-2);
+  return pick.map(function (w) { return w.charAt(0); }).join("").toUpperCase();
+}
