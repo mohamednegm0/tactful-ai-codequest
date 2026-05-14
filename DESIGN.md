@@ -122,7 +122,7 @@ spacing:
 ## Brand & Style
 The design system embodies a **Modern Corporate** aesthetic with a specific focus on high-fidelity AI technology. It prioritizes clarity, intelligence, and trustworthiness. The visual language balances the precision of enterprise software with the approachable fluidity of modern AI interfaces.
 
-The style leverages a "Clean Tech" approach: significant whitespace, a sophisticated dark-to-teal color progression, and subtle depth through layered surfaces. The emotional response is one of reliability and "calm power"—software that feels both robust and effortlessly smart.
+The style leverages a "Clean Tech" approach: significant whitespace, a sophisticated dark-to-teal color progression, and subtle depth through layered surfaces. The emotional response is one of reliability and "calm power", software that feels both robust and effortlessly smart.
 
 ## Colors
 The palette is rooted in a deep "Teal-and-Ink" foundation. 

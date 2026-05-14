@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basira — Live patient flow</title>
+<title>Basira · Live patient flow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -93,7 +93,7 @@
     <div class="callout-icon" aria-hidden="true">!</div>
     <div class="callout-body">
       <h2 class="callout-title" data-i18n="callout.bottleneck.title">Lab/Imaging is your bottleneck right now.</h2>
-      <p class="callout-text" data-i18n="callout.bottleneck.body">Median wait is 38 minutes — 13 minutes above the threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.</p>
+      <p class="callout-text" data-i18n="callout.bottleneck.body">Median wait is 38 minutes, 13 minutes above the threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.</p>
       <a class="callout-action" href="/stage-lab" data-i18n="callout.bottleneck.action">Investigate Lab/Imaging →</a>
     </div>
   </section>
@@ -112,7 +112,7 @@
     document.getElementById("kpi-median").textContent = fmtMin(DATA.kpis.medianEndToEndMin);
     document.getElementById("kpi-longest").textContent = fmtMin(DATA.kpis.longestWait.min);
     document.getElementById("kpi-longest-label").textContent =
-      t("kpi.longest") + " — " + DATA.kpis.longestWait.patient + " · " + t(STAGE_KEY_BY_ID.lab);
+      t("kpi.longest") + ": " + DATA.kpis.longestWait.patient + " · " + t(STAGE_KEY_BY_ID.lab);
 
     const stagesEl = document.getElementById("funnel-stages");
     stagesEl.innerHTML = "";

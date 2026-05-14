@@ -85,7 +85,7 @@ function stageHeat(stage) {
 }
 
 function fmtMin(n) {
-  if (n == null) return "—";
+  if (n == null) return "-";
   const minLabel = (typeof t === "function") ? t("time.min") : "min";
   const hourLabel = (typeof t === "function") ? t("time.hour") : "h";
   if (n < 60) return n + " " + minLabel;
