@@ -1,19 +1,19 @@
 # Discovery & framing memo · Basira
 
-**Wedge:** Basira (بصيرة), a live patient-flow visibility layer for hospital operations directors.
+**Wedge:** Basira (بصيرة) - a live patient-flow visibility layer for hospital operations directors.
 **Live prototype:** https://tactful-ai-codequest.pages.dev
 
 ---
 
-## Primary user, and why she's the buyer
+## Primary user - and why
 
-The hospital **Operations Director** (or COO at smaller hospitals). Accountable for throughput, with budget authority. Doctors, admins, and patients live downstream of her decisions but cannot change the system. She can, and she's the only persona who is *both* hurting and able to act, which makes her the cheapest customer to acquire.
+The hospital **Operations Director** (or COO at smaller hospitals). Accountable for throughput, with budget authority. Doctors, admins, and patients live downstream of her decisions but cannot change the system. She can - and she's the only persona who is *both* hurting and able to act, which makes her the cheapest customer to acquire.
 
 ## Job-to-be-done (one sentence)
 
 *"Tell me, right now, where my hospital is bleeding patient-time, so I can intervene before the day is lost."*
 
-## The wedge, and why this one beats the obvious answer
+## The wedge - and why this one
 
 The instinctive answer to "patient flow is broken" is a queue board or WhatsApp check-in. I went deeper:
 
@@ -24,11 +24,11 @@ The wedge is **visibility, not replacement**. Basira sits on top of whatever the
 
 ## What I decided NOT to build
 
-- **WhatsApp patient check-in**, compliance-hostile (PDPL, no audit trail). Phase 2 with a managed partner.
-- **Doctor's mobile card**, narrow, ignores the director, doctors resist new tools.
-- **Generic queue board**, shows symptoms, not causes.
-- **Triage bot**, clinical liability and regulatory burden.
-- **Insurance pre-auth**, long sales cycle, deeper integration; not Day 1.
+- **WhatsApp patient check-in** - compliance-hostile (PDPL, no audit trail). Phase 2 with a managed partner.
+- **Doctor's mobile card** - narrow, ignores the director, doctors resist new tools.
+- **Generic queue board** - shows symptoms, not causes.
+- **Triage bot** - clinical liability and regulatory burden.
+- **Insurance pre-auth** - long sales cycle, deeper integration; not Day 1.
 
 ## Assumptions
 
@@ -46,15 +46,15 @@ The wedge is **visibility, not replacement**. Basira sits on top of whatever the
 - Sub-5-minute event freshness without ballooning infra cost.
 - Data residency in Egypt or PDPL-compliant region.
 - Three ingestion tiers, matched to hospital maturity:
-  - *Tier 1, full HMS:* webhook events from the hospital's HIS (lab orders, consult-started, etc). Fastest, cleanest. Two weeks integration.
-  - *Tier 2, partial digital:* a staff micro-app on tablets at each nurse station. Front desk taps "registered → triage", triage nurse taps "→ consult", and so on. One week + 30-min training.
-  - *Tier 3, paper-and-Excel:* nightly CSV upload of the day's flow log, or a WhatsApp bot the front desk types short messages into ("Ahmed M. → lab"). Crude but ships in a day. Phase-2 upgrade path to Tier 1 or 2.
+  - *Tier 1 - full HMS:* webhook events from the hospital's HIS (lab orders, consult-started, etc). Fastest, cleanest. Two weeks integration.
+  - *Tier 2 - partial digital:* a staff micro-app on tablets at each nurse station. Front desk taps "registered → triage", triage nurse taps "→ consult", and so on. One week + 30-min training.
+  - *Tier 3 - paper-and-Excel:* nightly CSV upload of the day's flow log, or a WhatsApp bot the front desk types short messages into ("Ahmed M. → lab"). Crude but ships in a day. Phase-2 upgrade path to Tier 1 or 2.
 
 ## Riskiest assumption + cheapest test
 
 **Riskiest:** *Directors will act on what Basira shows.* If the screen confirms what they already suspect but no behavior changes, we built a thermometer in a room with no AC.
 
-**Cheapest test next week:** three 30-minute calls with directors at private Cairo hospitals (Andalusia, Alfa Cure, Heliopolis). Show the demo, ask one question: *"If Lab was red on Tuesday morning, what's the first thing you'd do, and would you actually do it?"* Three "I'd call the radiologist before lunch" = green light. Three "interesting, but…" = thermometer.
+**Cheapest test next week:** three 30-minute calls with directors at private Cairo hospitals (Andalusia, Alfa Cure, Heliopolis). Show the demo, ask one question: *"If Lab was red on Tuesday morning, what's the first thing you'd do - and would you actually do it?"* Three "I'd call the radiologist before lunch" = green light. Three "interesting, but…" = thermometer.
 
 ---
 
