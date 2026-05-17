@@ -18,20 +18,27 @@ Median time between a stage going red and the director drilling in or clicking t
 **4. Pilot-to-paid conversion at 4 weeks - viability.**
 % of 2-week pilots that convert to paid annual contracts within 4 weeks. Source: CRM + Stripe. Only honest signal that the wedge is commercially real.
 
-**5. Median wait reduction in the flagged stage - viability proxy.**
+**5. Median wait reduction in the flagged stage - desirability (outcome).**
 Per hospital, change in median wait at the most-flagged stage from week 1 to week 8. Source: the HMS event stream we already ingest. This is the renewal narrative: "your Tue/Thu Lab wait dropped 38→24 min" makes the customer's case for them.
+
+**6. Net Revenue Retention at month 12 - viability.**
+Source: Stripe + CRM. Below 100% with one renewal lost means the wedge doesn't expand inside the customer. Above 130% means we're selling more facilities into the same group.
 
 ## After 4 weeks live with one hospital
 
+At n=1 director, percentages are noise. Calibrate to absolute days and qualitative signal.
+
 **Double down if:**
-- Daily Active Director ≥ 70%
+- Director opens Basira ≥ 4 of 5 workdays in week 4
 - Bottleneck-to-action latency under 30 min in business hours
-- The director volunteers, unprompted, a decision they made because of Basira
+- The director volunteers, unprompted, one decision she made because of Basira
 
 **Kill the wedge if:**
-- DAD ≤ 30% by end of week 2 *and* the director cannot name one decision triggered by Basira
-- Median wait at the flagged stage is unchanged or worse
-- The director says "this confirms what I already knew" with no behavioral change
+- Director opens Basira < 2 of 5 workdays by end of week 2 *and* cannot name a decision triggered by it
+- Median wait at the flagged stage is unchanged or worse at week 8
+- The director says "this confirms what I already knew" with no behavior change
+
+When signals conflict, the qualitative one wins. A director who opens it every day but cannot name a decision is using it as a thermometer. A director who opens it twice a week but cancelled one shift's CT bookings because of it is the buyer we want.
 
 The kill condition isn't "the dashboard is wrong." It's "the dashboard is right and nothing changes" - meaning we built a thermometer. A thermometer is not a $400/month product.
 

@@ -119,53 +119,51 @@ spacing:
   margin-desktop: 40px
 ---
 
-## Brand & Style
-The design system embodies a **Modern Corporate** aesthetic with a specific focus on high-fidelity AI technology. It prioritizes clarity, intelligence, and trustworthiness. The visual language balances the precision of enterprise software with the approachable fluidity of modern AI interfaces.
-
-The style leverages a "Clean Tech" approach: significant whitespace, a sophisticated dark-to-teal color progression, and subtle depth through layered surfaces. The emotional response is one of reliability and "calm power", software that feels both robust and effortlessly smart.
+## Brand & style
+Design system for Basira. Teal on white, with a gold warning accent. Plus Jakarta Sans for headlines, Inter for body. Built to read clearly in English, MSA, and Egyptian Arabic with no per-language CSS.
 
 ## Colors
-The palette is rooted in a deep "Teal-and-Ink" foundation. 
-- **Primary:** The deep teal (`#0B636D`) serves as the core brand anchor, used for primary actions and brand presence.
-- **Secondary:** The vibrant cyan (`#29ABB9`) is used for highlights, data visualizations, and interactive accents to provide a "glow" effect typical of AI interfaces.
-- **Tertiary:** The gold (`#EAB308`) is a high-contrast utility color reserved for warnings, specialized status indicators, or critical call-to-actions.
-- **Neutral:** The near-black ink (`#0A1F21`) provides the grounding for typography and high-contrast dark-mode backgrounds.
+Teal-on-ink foundation.
+- **Primary:** Deep teal (`#0B636D`). Brand anchor and primary actions.
+- **Secondary:** Cyan (`#29ABB9`). Highlights and data viz.
+- **Tertiary:** Gold (`#EAB308`). Warning state only.
+- **Neutral:** Near-black ink (`#0A1F21`). Typography and dark-mode background.
 
-The system uses a crisp white background for the primary interface to maintain maximum readability and a professional SaaS feel.
+White background by default. Dark mode uses the ink as the surface.
 
 ## Typography
-The system uses a dual-font strategy to balance character with utility. 
-- **Plus Jakarta Sans** is the display face, used for headlines and prominent brand moments. Its geometric but soft curves provide a modern, welcoming tech aesthetic.
-- **Inter** is the workhorse font for all body copy, inputs, and labels. Its high x-height and neutral design ensure maximum legibility in data-dense software environments.
+Two faces.
+- **Plus Jakarta Sans** for headlines.
+- **Inter** for body copy, inputs, and labels.
+- **Cairo** for Arabic glyphs (loaded on `dir="rtl"`).
 
-Scale transitions occur primarily at the headline level for mobile, while body text remains consistent to preserve readability across devices.
+Headline sizes shrink on mobile. Body stays the same across breakpoints.
 
-## Layout & Spacing
-The layout relies on a **12-column fluid grid** for desktop environments, transitioning to a **4-column grid** for mobile. A strict 4px/8px baseline rhythm is enforced to ensure vertical consistency.
+## Layout & spacing
+12-column grid on desktop, 4-column on mobile. 4px/8px baseline.
 
 - **Desktop (1440px+):** 40px outer margins, 24px gutters.
-- **Tablet (768px - 1439px):** 32px outer margins, 20px gutters.
-- **Mobile (Up to 767px):** 16px outer margins, 16px gutters.
+- **Tablet (768-1439px):** 32px outer margins, 20px gutters.
+- **Mobile (≤767px):** 16px outer margins, 16px gutters.
 
-Spacing tokens are used for both internal component padding and external layout margins to create a rhythmic, structured appearance that feels engineered and precise.
+CSS uses logical properties only (`margin-inline-start`, `padding-block-end`) so LTR and RTL share one stylesheet. A pre-commit hook blocks any physical-direction property.
 
-## Elevation & Depth
-Depth is communicated through **Ambient Shadows** and **Tonal Layers**. Instead of harsh black shadows, this system uses "tinted elevation" where shadows inherit a small amount of the primary brand color to feel more integrated.
+## Elevation
+Tinted shadows (primary color, low alpha), not pure black.
 
 - **Level 0 (Base):** White or `#F4F7F7` surface. No shadow.
 - **Level 1 (Card):** 1px border (`#E2E8F0`) with a very soft shadow: `0 2px 4px rgba(11, 99, 109, 0.05)`.
 - **Level 2 (Dropdown/Popover):** `0 10px 15px -3px rgba(11, 99, 109, 0.1), 0 4px 6px -2px rgba(11, 99, 109, 0.05)`.
 - **Level 3 (Modal):** `0 20px 25px -5px rgba(11, 99, 109, 0.1), 0 10px 10px -5px rgba(11, 99, 109, 0.04)`.
 
-Glassmorphism is used sparingly for navigation bars and overlay panels, employing a `20px` backdrop blur and a `10%` white tint.
+Glassmorphism on nav bars and overlays only: `20px` backdrop blur, `10%` white tint.
 
 ## Shapes
-The shape language is consistently **Rounded**, reflecting a modern software feel that isn't overly aggressive. 
-- **Standard Components:** (Buttons, Inputs, Cards) use a 0.5rem (8px) radius.
-- **Large Components:** (Modals, Feature Sections) use a 1rem (16px) radius.
-- **Small Utilities:** (Badges, Chips, Tooltips) use a 0.25rem (4px) radius or are fully pill-shaped.
+Rounded throughout.
 
-This consistency in curvature creates a cohesive "container" strategy across the entire product.
+- **Standard components** (Buttons, Inputs, Cards): 0.5rem (8px) radius.
+- **Large components** (Modals, Feature Sections): 1rem (16px) radius.
+- **Small utilities** (Badges, Chips, Tooltips): 0.25rem (4px) or fully pill-shaped.
 
 ## Components
 
@@ -185,7 +183,7 @@ This consistency in curvature creates a cohesive "container" strategy across the
 
 ### Cards & Containers
 - Cards use the Level 1 shadow and 0.5rem radius.
-- AI-driven components (like chat bubbles or insights) utilize a subtle gradient border from `#0B636D` to `#29ABB9` to differentiate "smart" elements from static content.
+- AI-driven components (chat bubbles, insights) use a gradient border from `#0B636D` to `#29ABB9` to mark them as generated content.
 
 ### Status Chips
 - **Success:** Soft teal background with deep teal text.

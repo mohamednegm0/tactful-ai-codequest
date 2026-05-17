@@ -14,9 +14,13 @@
 6. `/history` - 7-day pattern shows Tue/Thu Lab spikes, Dr. Hassan averages 23 min above peers
 7. `/settings` - integrations tile shows the hospital's HIS, Vezeeta, and Clinisys (Lab) connected, WhatsApp deferred to Q2
 
+## Time honesty
+
+The brief sets a 4-hour cap and explicitly says a sharp 3-hour submission beats a sprawling 6-hour one. Actual time on this take-home was significantly more, spread across four evenings. If I were doing it again on a 4-hour budget I would cut: trilingual UI, dark mode, CI/CD pipeline, the `/project` landing page. I would keep: the memo, the funnel, the per-doctor table, the kill criterion, the cut-list with reasons.
+
 ## AI tools used - and where each one helped
 
-This prototype was built end-to-end with AI assistance, but the differentiator was *how* the assistant was instrumented, not which model was chosen. I treated the AI like a junior engineer: gave it a constitution, then let it move fast inside the constraints.
+Built end-to-end with AI assistance. The tooling is described below, not as a pitch but so the reviewer can see exactly which tool did what.
 
 | Tool | What it did |
 |---|---|
@@ -29,11 +33,9 @@ This prototype was built end-to-end with AI assistance, but the differentiator w
 | **Bun + TypeScript + HTMX** | Stack chosen deliberately: no build step, no framework boilerplate, static HTML + 30 lines of vanilla JS per screen. The grader can View Source and immediately understand the data shape. Reads as honest hand-written code, not a generated v0 mockup. |
 | **GitHub Actions + Cloudflare Pages + Wrangler CLI** | Push-to-deploy pipeline. Every commit goes live in ~30 seconds. API token stored as a GitHub Secret. Real production infrastructure, set up in this session. |
 
-## Why this approach over v0 / Lovable / Bolt
+## Why hand-written HTMX over v0 / Lovable / Bolt
 
-A typical PO take-home produces a v0 mockup: clickable, beautiful, throwaway. I made a different bet - a small AI-native dev workflow where the assistant operates inside enforced guardrails (RTL discipline, separation of concerns, no inline styles, surgical edits) and ships to a real URL.
-
-The argument for the role: this is the workflow I'd bring into a real product team. Instrument the assistant with project constraints, then move fast inside them. The hook is to AI-coding what a linter is to engineering: automated discipline, not after-the-fact review.
+The reviewer can View Source on any page and see the data shape in 30 seconds. No generated bundle to read past, no framework runtime to skip over.
 
 ## What ships with the prototype today
 
@@ -48,5 +50,5 @@ The argument for the role: this is the workflow I'd bring into a real product te
 
 - A short "Day in the life" demo recording inline on the dashboard
 - Real-time toggle to demo a "what if Dr. Hassan moves to fewer CT orders?" simulation
-- Streamline icons (API key wired in `.env`, not yet rendered)
+- Streamline icons - decided against in v1. Inline SVG matches the type weight better at small sizes and saves an API hop per page load. Revisit if the icon set grows past ten.
 - Live tablet-input demo for Tier 2 onboarding

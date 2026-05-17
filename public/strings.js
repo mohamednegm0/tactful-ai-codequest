@@ -38,7 +38,7 @@ const STRINGS = {
     "stage.waiting": "waiting",
 
     "callout.bottleneck.title": "Lab/Imaging is your bottleneck right now.",
-    "callout.bottleneck.body": "Median wait is 38 minutes, 13 minutes above the threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.",
+    "callout.bottleneck.body": "Median wait is 38 minutes, 3 minutes above the red threshold. 19 patients waiting. Top contributor: Dr. Hassan's CT orders.",
     "callout.bottleneck.action": "Investigate Lab/Imaging →",
 
     "lab.breadcrumb.live": "← Live",
@@ -135,7 +135,7 @@ const STRINGS = {
     "stage.waiting": "بالانتظار",
 
     "callout.bottleneck.title": "نقطة الاختناق الآن: المختبر والأشعة.",
-    "callout.bottleneck.body": "متوسط الانتظار 38 دقيقة، أي 13 دقيقة فوق الحد المسموح. 19 مريضاً ينتظرون. السبب الأبرز: طلبات الأشعة المقطعية للدكتور حسن.",
+    "callout.bottleneck.body": "متوسط الانتظار 38 دقيقة، أي 3 دقائق فوق الحد الأحمر. 19 مريضاً ينتظرون. السبب الأبرز: طلبات الأشعة المقطعية للدكتور حسن.",
     "callout.bottleneck.action": "تابع المختبر والأشعة ←",
 
     "lab.breadcrumb.live": "→ مباشر",
@@ -232,7 +232,7 @@ const STRINGS = {
     "stage.waiting": "مستنيين",
 
     "callout.bottleneck.title": "الاختناق دلوقتي في المعمل والأشعة.",
-    "callout.bottleneck.body": "متوسط الانتظار 38 دقيقة، يعني أكتر من الحد المسموح بـ 13 دقيقة. فيه 19 مريض مستنيين. أكبر سبب: طلبات الأشعة المقطعية بتاعت د. حسن.",
+    "callout.bottleneck.body": "متوسط الانتظار 38 دقيقة، يعني فوق الحد الأحمر بـ 3 دقايق. فيه 19 مريض مستنيين. أكبر سبب: طلبات الأشعة المقطعية بتاعت د. حسن.",
     "callout.bottleneck.action": "ادخل شوف المعمل والأشعة ←",
 
     "lab.breadcrumb.live": "→ مباشر",

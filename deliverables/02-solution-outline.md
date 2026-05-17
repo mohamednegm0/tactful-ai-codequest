@@ -37,6 +37,13 @@ End-to-end, the director closes the loop in 90 seconds. That's the demo.
 
 The prototype ships trilingual (English, Modern Standard Arabic, Egyptian Arabic) with full RTL and dark mode. A custom pre-edit hook blocks any CSS that would break right-to-left, so the same files render LTR for English and RTL for Arabic with no rewrite.
 
-## Commercial fit (one paragraph)
+## Commercial fit
 
-**Buyer:** the COO / Operations Director at a mid-size private hospital (50-200 beds), or the Head of Patient Experience at a hospital group (Cleopatra-tier). **Evaluation:** 30-minute demo + 2-week pilot on one outpatient clinic; success = the director uses it daily by week 2 and books a follow-up site. **Pricing hypothesis:** $400/month per facility (self-serve, CSV or tablet check-in); $1,500/month connected tier (HIS webhooks, Clinisys integration, multi-clinic); custom for groups. Sales cycle is short because buyer and user are the same person. **Onboarding scales to maturity:** Tier 1 (full HIS) wires up via webhooks in two weeks; Tier 2 (partial digital - most mid-size private hospitals) deploys a tablet check-in app at each nurse station; Tier 3 (paper-and-Excel - only ~314 Egyptian hospitals had EHR as of October 2024) starts with nightly CSV and graduates upward. Expansion story = hospital groups: prove at one site, roll the chain. Phase 2 (WhatsApp patient updates via a Unifonic-class compliance partner - required by Saudi PDPL and similar regional laws) becomes the upsell that justifies the connected tier.
+- **Buyer:** COO / Operations Director at a 50-200 bed private hospital, or the Head of Patient Experience at a hospital group (Cleopatra-tier).
+- **Evaluation:** 30-min demo + 2-week pilot on one outpatient clinic. Success = the director uses it daily by week 2 and books a follow-up site.
+- **Pricing:** $400/month self-serve (CSV or tablet check-in); $1,500/month connected tier (HIS webhooks, Clinisys integration, multi-clinic); custom for groups.
+- **Sales cycle:** short - buyer and user are the same person.
+
+**Onboarding scales to maturity.** Tier 1 (full HIS) wires up via webhooks in two weeks. Tier 2 (partial digital - most mid-size private hospitals) deploys a tablet check-in app at each nurse station. Tier 3 (paper-and-Excel - only ~314 Egyptian hospitals had EHR as of October 2024) starts with nightly CSV and graduates upward.
+
+**Expansion + Phase 2.** Prove at one site, roll the chain. Phase 2 (WhatsApp patient updates via a Unifonic-class compliance partner - required by Egypt's Personal Data Protection Law (Law 151 of 2020) and equivalent regional regimes) becomes the upsell that justifies the connected tier.
